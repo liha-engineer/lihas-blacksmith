@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// enum 타입을 줄 수도 있다!
+// 인벤토리 칸수를 제한하고 싶으면 inventory로 default를 정해주는 것도 좋다 
+
+enum ItemType {
+  WEAPON
+  ARMOUR
+  GLOVE
+  SHOES
+  ACCESORY
+  DISPOSABLE
+
+}
+
+model Characters {
+  characterId Int @id @default(autoincrement()) @map("characterId")
+  accountId Int @map("accountId")
+  characterName String @unique @map("characterName")
+  inventoryCount Int @default(10) @map("inventoryCount")
+  hp Int @default(500) @map("hp")
+  atk Int @default(100) @map("atk")
+  money Int @default(10000) @map("money") 
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  account Account @relation(fields: [accountId], references: [accountId], onDelete: Cascade)
+  useritems UserItems[]
+  equippeditems EquippedItems[]
+  
+  @@map("Characters")
+}
+
+model Account {
+  accountId Int @id @default(autoincrement()) @map("accountId")
+  id String @unique @map("id")
+  name String @map("name")
+  password String @map("password")
+  createdAt DateTime @default(now()) @map("createdAt")
+
+  characters Characters[]
+
+  @@map("Account")
+}
+
+model UserItems { 
+  userItemsId Int @id @default(autoincrement()) @map("UserItemsId")
+  characterId Int @map("characterId")
+  itemId Int @map("itemId")
+  itemName String @map("itemName")
+
+  characters Characters @relation (fields: [characterId], references: [characterId], onDelete : Cascade)
+  equippeditem EquippedItems?
+
+  @@map("UserItems")
+}
+
+model EquippedItems {
+  equippedItemId Int @id @default(autoincrement()) @map("itemId")
+  userItemsId Int @unique @map("userItemsId")
+  characterId Int @map("characterId")
+  equippedItemName String @unique @map("itemName")
+  
+  useritems UserItems @relation (fields: [userItemsId], references: [userItemsId], onDelete: Cascade)
+  characters Characters @relation (fields: [characterId], references : [characterId], onDelete : Cascade)
+  
+  @@map("Equippeditems")
+}
+
+model Items {
+  itemId Int @id @default(autoincrement()) @map("itemId")
+  item_name String @unique @map("item_name")
+  item_code Int @map("item_code")
+  item_stat Json @map("item_stat")
+  price Int @map("price")
+  type ItemType @map("type")
+  tooltip String? @map("tooltip") @db.Text
+
+  @@map("Items")
+}

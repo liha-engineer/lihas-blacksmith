@@ -134,18 +134,11 @@ router.delete('/characters/:characterId', authMiddleWare, async(req, res, next) 
   if (!character)
     return res.status(404).json({message : "캐릭터가 존재하지 않습니다"})
   
-  const result = await prisma.$transaction(async (tx) => {
   const deleteCharacter = await tx.characters.delete({
      where : { characterId : +characterId }
     });
 
-    return deleteCharacter;
-
-  }, {
-    isolationLevel : Prisma.TransactionIsolationLevel.ReadCommitted
-  }) 
-
-  return res.status(200).json({message : `${result.characterName} 캐릭터가 삭제되었습니다.`,})
+  return res.status(200).json({message : `${character.characterName} 캐릭터가 삭제되었습니다.`,})
   } catch(err) {
    next(err); 
   }

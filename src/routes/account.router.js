@@ -104,7 +104,7 @@ router.get('/account', authMiddleware, async(req, res, next) => {
         }
     });
     if (!user) 
-        return res.status(401).json({ message : "사용자가 존재하지 않습니다"}); 
+        return res.status(404).json({ message : "사용자가 존재하지 않습니다"}); 
 
     return res.status(200).json({ data : user })
 });

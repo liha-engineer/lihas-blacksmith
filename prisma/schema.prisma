@@ -61,6 +61,7 @@ model UserItems {
   characterId Int @map("characterId")
   itemId Int @map("itemId")
   itemName String @map("itemName")
+  itemCount Int
 
   characters Characters @relation(fields: [characterId], references: [characterId], onDelete : Cascade)
   equippeditem EquippedItems?

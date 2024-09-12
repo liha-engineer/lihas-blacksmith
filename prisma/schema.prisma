@@ -26,6 +26,18 @@ enum ItemType {
 
 }
 
+model Account {
+  accountId Int @id @default(autoincrement()) @map("accountId")
+  id String @unique @map("id")
+  name String @map("name")
+  password String @map("password")
+  createdAt DateTime @default(now()) @map("createdAt")
+
+  characters Characters[]
+
+  @@map("Account")
+}
+
 model Characters {
   characterId Int @id @default(autoincrement()) @map("characterId")
   accountId Int @map("accountId")
@@ -42,18 +54,6 @@ model Characters {
   equippeditems EquippedItems[]
   
   @@map("Characters")
-}
-
-model Account {
-  accountId Int @id @default(autoincrement()) @map("accountId")
-  id String @unique @map("id")
-  name String @map("name")
-  password String @map("password")
-  createdAt DateTime @default(now()) @map("createdAt")
-
-  characters Characters[]
-
-  @@map("Account")
 }
 
 model UserItems { 

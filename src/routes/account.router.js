@@ -83,6 +83,7 @@ router.post("/sign-in", async (req, res, next) => {
     .json({ message : "로그인에 성공하였습니다.", data : accessToken })
 });
 
+// 계정정보 조회
 router.get('/account', authMiddleware, async(req, res, next) => {
     // req.user 안에 사용자 정보를 저장해놨기 때문에 가져올것
     const { accountId } = req.user;
@@ -103,7 +104,7 @@ router.get('/account', authMiddleware, async(req, res, next) => {
         }
     });
     if (!user) 
-        return res.status(404).json({ message : "사용자가 존재하지 않습니다"}); 
+        return res.status(401).json({ message : "사용자가 존재하지 않습니다"}); 
 
     return res.status(200).json({ data : user })
 });

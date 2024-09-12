@@ -78,6 +78,7 @@ router.get('/items', async(req, res, next) => {
             item_code : true,
             item_name : true,
             price : true,
+            tooltip : true,
         }
     });
     return res.status(200).json({message : "아이템 전체 목록 일람", data : itemList});
@@ -93,6 +94,7 @@ router.get('/items/:itemId', async (req, res, next) => {
             item_name : true,
             item_stat : true,
             price : true,
+            tooltip : true,
         }
 
     });

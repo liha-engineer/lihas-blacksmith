@@ -86,6 +86,7 @@ model Items {
   item_code Int @map("item_code")
   item_stat Json @map("item_stat")
   price Int @map("price")
+  count Int @map("count")
   type ItemType @map("type")
   tooltip String? @map("tooltip") @db.Text
 

@@ -16,7 +16,7 @@ router.post('/sign-up', async (req, res, next) => {
     try {
         const { id, name, password, passwordConfirm } = req.body;
 
-        const result = await prisma.$transaction(async (tx) => {
+            await prisma.$transaction(async (tx) => {
             const isExistName = await tx.account.findFirst({
                 where: { id },
             });

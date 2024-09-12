@@ -29,9 +29,9 @@ const loginAuth = async (req, res, next) => {
     next();
   } catch (err) {
     if (err.name === 'TokenExpiredError')
-        return res.status(400).json({message : '토큰이 만료되었습니다.'})
+        return res.status(401).json({message : '토큰이 만료되었습니다.'})
     if (err.name === 'JsonWebTokenError')
-        return res.status(400).json({message : '토큰이 손상되었습니다.'})
+        return res.status(401).json({message : '토큰이 손상되었습니다.'})
 
     return res.status(400).json({ message: err.message });
   }

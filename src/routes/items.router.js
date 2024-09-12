@@ -1,15 +1,16 @@
 import express from 'express'
 import { prisma } from "../utils/prisma/index.js";
 import { Prisma } from "@prisma/client";
+import authMiddleware from '../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
 // 아이템 생성 api
 router.post('/items', async (req, res, next) => {
-    const { item_name, item_code, item_stat, price, type, tooltip } = req.body;
+    const { item_name, item_code, item_stat, price, count, type, tooltip } = req.body;
 
     const isExistItem = await prisma.items.findFirst({
-        where: {itemName}
+        where: {item_name}
     })
     if (isExistItem)
         return res.status(409).json({message : "해당 아이템이 이미 존재합니다"});
@@ -24,8 +25,11 @@ router.post('/items', async (req, res, next) => {
         data : {
             item_name,
             item_code,
-            item_stat : { atk, hp },
+            item_stat : { 
+                "atk" : item_stat.atk, 
+                "hp" : item_stat.hp },
             price,
+            count,
             type,
             tooltip
         }
@@ -56,8 +60,8 @@ router.put('/items/:itemId', async (req, res, next) => {
         data : {
             item_name,
             item_stat :  {
-                atk : atk || isCorrectItem.atk,
-                hp : hp || isCorrectItem.hp,
+                "atk" : item_stat.atk,
+                "hp" : item_stat.hp,
             },
             tooltip : tooltip || isCorrectItem.tooltip,
         }, 
@@ -93,6 +97,11 @@ router.get('/items/:itemId', async (req, res, next) => {
 
     });
     return res.status(200).json({message : "아이템 상세조회 완료", data : itemInfo})
+})
+
+router.post('/userItems', authMiddleware, (req, res, next) => {
+    const {item_code, count} = req.body;
+    const {characterId} = 
 })
 
 

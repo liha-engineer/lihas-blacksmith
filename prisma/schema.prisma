@@ -62,7 +62,7 @@ model UserItems {
   itemId Int @map("itemId")
   itemName String @map("itemName")
 
-  characters Characters @relation (fields: [characterId], references: [characterId], onDelete : Cascade)
+  characters Characters @relation(fields: [characterId], references: [characterId], onDelete : Cascade)
   equippeditem EquippedItems?
 
   @@map("UserItems")
@@ -74,8 +74,8 @@ model EquippedItems {
   characterId Int @map("characterId")
   equippedItemName String @unique @map("itemName")
   
-  useritems UserItems @relation (fields: [userItemsId], references: [userItemsId], onDelete: Cascade)
-  characters Characters @relation (fields: [characterId], references : [characterId], onDelete : Cascade)
+  useritems UserItems @relation(fields: [userItemsId], references: [userItemsId], onDelete: Cascade)
+  characters Characters @relation(fields: [characterId], references : [characterId], onDelete : Cascade)
   
   @@map("Equippeditems")
 }

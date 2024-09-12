@@ -15,31 +15,28 @@ const router = express.Router();
 router.post('/sign-up', async (req, res, next) => {
     try {
         const { id, name, password, passwordConfirm } = req.body;
-        
-        const isExistName = await prisma.account.findFirst({
-            where: { id },
-        });
-
-        if (!/^[a-z0-9]+$/.test(id))
-            return res.status(400).json({message : "ID는 영문과 소문자 조합이어야 합니다. "})
-
-        if (isExistName) 
-            return res.status(409).json({message: "해당 닉네임의 유저가 이미 존재합니다. "});
-
-        if (password.length < 6)
-            return res.status(400).json({message : "패스워드는 6자 이상이어야 합니다. "})
-
-        if (password.replace(/^\s+$/, '') === null)
-            return res.status(400).json({message : "패스워드는 공백일 수 없습니다. "});
-        
-        if (password !== passwordConfirm)
-            return res.status(400).json({message: "패스워드가 확인과 일치하지 않습니다." })
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-
 
         const result = await prisma.$transaction(async (tx) => {
+            const isExistName = await tx.account.findFirst({
+                where: { id },
+            });
+            if (!/^[a-z0-9]+$/.test(id))
+                return res.status(400).json({message : "ID는 영문과 소문자 조합이어야 합니다. "})
+
+            if (isExistName) 
+                return res.status(409).json({message: "해당 닉네임의 유저가 이미 존재합니다. "});
+
+            if (password.length < 6)
+                return res.status(400).json({message : "패스워드는 6자 이상이어야 합니다. "})
+
+            if (password.replace(/^\s+$/, '') === null)
+                return res.status(400).json({message : "패스워드는 공백일 수 없습니다. "});
+            
+            if (password !== passwordConfirm)
+                return res.status(400).json({message: "패스워드가 확인과 일치하지 않습니다." })
+
+            const hashedPassword = await bcrypt.hash(password, 10);
+
             const user = await tx.account.create({
                 data: {
                     id, 
@@ -52,7 +49,7 @@ router.post('/sign-up', async (req, res, next) => {
         isolationLevel : Prisma.TransactionIsolationLevel.ReadCommitted
         });
 
-        return res.status(201).json({message : "회원 가입이 완료되었습니다."})
+        return res.status(201).json({message : `${user.id}님, 회원 가입이 완료되었습니다.`})
     } catch(err) {
         next(err);
      }

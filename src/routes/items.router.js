@@ -99,10 +99,10 @@ router.get('/items/:itemId', async (req, res, next) => {
     return res.status(200).json({message : "아이템 상세조회 완료", data : itemInfo})
 })
 
-router.post('/userItems', authMiddleware, (req, res, next) => {
-    const {item_code, count} = req.body;
-    const {characterId} = 
-})
+// router.post('/userItems', authMiddleware, (req, res, next) => {
+//     const {item_code, count} = req.body;
+//     const {characterId} = 
+// })
 
 
 export default router;

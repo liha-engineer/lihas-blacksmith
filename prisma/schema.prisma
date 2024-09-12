@@ -82,9 +82,9 @@ model EquippedItems {
 
 model Items {
   itemId Int @id @default(autoincrement()) @map("itemId")
-  item_name String @unique @map("item_name")
-  item_code Int @map("item_code")
-  item_stat Json @map("item_stat")
+  itemName String @unique @map("itemName")
+  itemCode Int @map("itemCode")
+  itemStat Json @map("itemStat")
   price Int @map("price")
   count Int @map("count")
   type ItemType @map("type")

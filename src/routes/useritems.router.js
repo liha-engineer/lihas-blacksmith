@@ -68,3 +68,5 @@ router.post('/userItems/:characterId', authMiddleware, async (req, res, next) =>
 
     return res.status(200).json({message : `${item.itemName} 아이템 ${buyItem.itemCount}개 구매하였습니다.`, data : changedCharacterInfo.money})
 })
+
+export default router;

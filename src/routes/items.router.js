@@ -75,6 +75,7 @@ router.put('/items/:itemId', async (req, res, next) => {
 router.get('/items', async(req, res, next) => {
     const itemList = await prisma.items.findMany({
         select : {
+            itemId : true,
             itemCode : true,
             itemName : true,
             price : true,

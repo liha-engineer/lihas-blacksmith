@@ -16,8 +16,7 @@ router.post('/sign-up', async (req, res, next) => {
     try {
         const { id, name, password, passwordConfirm } = req.body;
 
-            await prisma.$transaction(async (tx) => {
-            const isExistName = await tx.account.findFirst({
+            const isExistName = await prisma.account.findFirst({
                 where: { id },
             });
             if (!/^[a-z0-9]+$/.test(id))
@@ -37,18 +36,13 @@ router.post('/sign-up', async (req, res, next) => {
 
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            const user = await tx.account.create({
+            const user = await prisma.account.create({
                 data: {
                     id, 
                     name, 
                     password: hashedPassword
                 }
             });
-            return user;
-        }, {
-        isolationLevel : Prisma.TransactionIsolationLevel.ReadCommitted
-        });
-
         return res.status(201).json({message : `${user.id}님, 회원 가입이 완료되었습니다.`})
     } catch(err) {
         next(err);

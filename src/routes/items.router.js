@@ -101,44 +101,6 @@ router.get('/items/:itemId', async (req, res, next) => {
     return res.status(200).json({message : "아이템 상세조회 완료", data : itemInfo})
 })
 
-// 아이템 구매
-router.post('/userItems/:characterId', authMiddleware, async (req, res, next) => {
-    const {characterId} = req.params;
-    const {itemCode, count} = req.body;
-
-    const character = await prisma.characters.findUnique({
-        where : { characterId }
-    });
-    if (!character)
-        return req.status(403).json({message : "너... 뭐냐... 어케 들어온거냐..."})
-
-    const item = await prisma.items.findFirst({
-        where : { itemCode },
-    });
-    if(!item)
-        return res.status(404).json({ message : "아이템이 존재하지 않습니다"});
-    if(count < 0)
-        return res.status(400).json({message : "정확한 수량을 입력해 주세요"});
-    if(character.money < item.price)
-        return res.status(400).json({message : "소지금이 부족합니다"})
-
-    const buyItem = await prisma.userItems.upsert({
-        data: {
-            itemCode,
-            itemName,
-            itemCount : item.itemCount + 1,
-        }
-    })
-
-    const changedCharacterInfo = await prisma.characters.upsert({
-        where : { characterId },
-        data : {
-            money : character.money - item.price
-        }
-    })
-
-    return res.status(200).json({message : `${buyItem.itemName} 아이템 ${buyItem.itemCount}개 구매하였습니다.`, data : changedCharacterInfo.money})
-})
 
 
 export default router;

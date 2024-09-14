@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output = "./generated/gameDataClient"
+}
+
+datasource gamedb {
+  provider = "mysql"
+  url      = env("GAMEDB_URL")
+}
+
+// enum 타입을 줄 수도 있다!
+// 인벤토리 칸수를 제한하고 싶으면 inventory로 default를 정해주는 것도 좋다 
+
+enum ItemType {
+  WEAPON
+  ARMOUR
+  GLOVE
+  SHOES
+  ACCESORY
+  DISPOSABLE
+}
+
+model Items {
+  itemId Int @id @default(autoincrement())
+  itemName String @unique 
+  itemCode Int 
+  itemStat Json 
+  price Int 
+  type ItemType 
+  tooltip String?  @gamedb.Text
+
+  @@map("Items")
+}

@@ -1,5 +1,5 @@
 import express from 'express';
-import { prisma } from '../utils/prisma/index.js';
+import { userDataClient } from '../utils/prisma/index.js';
 import authMiddleWare from '../middlewares/auth.middleware.js';
 import headerCheckMiddleWare from '../middlewares/header-check.middleware.js';
 import { Prisma } from '@prisma/client';
@@ -15,29 +15,36 @@ router.post('/characters', authMiddleWare, async (req, res, next) => {
     const { characterName } = req.body;
     const { accountId } = req.user;
 
-    const duplicateName = await prisma.characters.findFirst({
+    const duplicateName = await userDataClient.characters.findFirst({
       where: { characterName },
     });
     if (duplicateName)
-      return res
-        .status(409)
-        .json({ message: '해당 이름의 캐릭터가 이미 존재합니다' });
+      return res.status(409).json({ message: '해당 이름의 캐릭터가 이미 존재합니다' });
 
-    const result = await prisma.$transaction( async (tx) => {
+    const result = await userDataClient.$transaction(
+      async (tx) => {
         const character = await tx.characters.create({
           data: {
             accountId: +accountId,
             characterName: characterName,
           },
         });
-        return character;
+
+        const inventory = await tx.inventory.create({
+          data: {
+            characterId: +character.characterId,
+          },
+        });
+
+        return [character, inventory];
       },
+
       {
         isolationLevel: Prisma.TransactionIsolationLevel.ReadCommitted,
       },
     );
 
-    return res.status(201).json({ message: '캐릭터 생성 완료!', chracterId: result.characterId});
+    return res.status(201).json({ message: '캐릭터 생성 완료!', result: result[0] });
   } catch (err) {
     next(err);
   }
@@ -46,10 +53,13 @@ router.post('/characters', authMiddleWare, async (req, res, next) => {
 // 캐릭터 전체목록 조회
 router.get('/characters', authMiddleWare, async (req, res, next) => {
   const { accountId } = req.user;
-  
-  const characters = await prisma.characters.findMany({
+
+  const characters = await userDataClient.characters.findMany({
     where: { accountId: +accountId },
     select: {
+      accountId: true,
+      id: true,
+      characterId: true,
       characterName: true,
     },
   });
@@ -58,25 +68,27 @@ router.get('/characters', authMiddleWare, async (req, res, next) => {
 });
 
 // 캐릭터 상세조회 - 비로그인이거나 해당유저가 아닌 경우 money 및 상세정보 미출력하도록
-router.get('/characters/search', headerCheckMiddleWare, authMiddleWare, async (req, res, next) => {
-    const { characterName } = req.body;
+router.get(
+  '/characters/:characterId',
+  headerCheckMiddleWare,
+  authMiddleWare,
+  async (req, res, next) => {
+    const { characterId } = req.params;
     const { accountId } = req.user;
 
     // 지금 로그인해있는 유저랑 이 캐릭터의 유저랑 같은지 찾는것.
-    // 캐릭터 닉으로 찾는데 유니크 + 캐릭터테이블에도 accountId 있어서 밑에서 그걸 잡아올것
-    const isSameUser = await prisma.characters.findFirst({
-      where: { characterName },
+    const isSameUser = await userDataClient.characters.findUnique({
+      where: { characterId: +characterId },
     });
 
-    if (!isSameUser)
-      return res.status(404).json({ message: '캐릭터가 존재하지 않습니다.' });
+    if (!isSameUser) return res.status(404).json({ message: '캐릭터가 존재하지 않습니다.' });
 
-    let characters = await prisma.characters.findFirst({
-      where: { characterName },
+    let characters = await userDataClient.characters.findUnique({
+      where: { characterId: +characterId },
       select: {
         characterId: true,
         accountId: true,
-        characterName: true,        
+        characterName: true,
         hp: true,
         atk: true,
         money: true,
@@ -84,17 +96,17 @@ router.get('/characters/search', headerCheckMiddleWare, authMiddleWare, async (r
       },
     });
 
-    // 지금 로그인한 계정아이디 != 캐릭터 닉의 계정아이디면 딴사람이란 얘기니까
     // hp랑 atk만 보여주게 설정
-    if (accountId !== isSameUser.accountId)
-      characters = await prisma.characters.findFirst({
-        where: { characterName },
+    if (accountId !== isSameUser.accountId) {
+      characters = await userDataClient.characters.findUnique({
+        where: { characterId: +characterId },
         select: {
           characterName: true,
           hp: true,
           atk: true,
         },
       });
+    }
 
     return res.status(200).json({ data: characters });
   },
@@ -104,7 +116,7 @@ router.get('/characters/search', headerCheckMiddleWare, authMiddleWare, async (r
 // 얘는 특별한 때만 돌아가는 녀석이다
 router.get('/characters/search', async (req, res, next) => {
   const { characterName } = req.body;
-  const characters = await prisma.characters.findFirst({
+  const characters = await userDataClient.characters.findFirst({
     where: { characterName },
     select: {
       characterName: true,
@@ -115,32 +127,31 @@ router.get('/characters/search', async (req, res, next) => {
   return res.status(200).json({ data: characters });
 });
 
-router.delete('/characters/:characterId', authMiddleWare, async(req, res, next) => {
+router.delete('/characters/:characterId', authMiddleWare, async (req, res, next) => {
   try {
-    const {characterId} = req.params;
-  const {accountId} = req.user;
-  if(!accountId)
-    return res.status(401).json({message : "계정 정보가 존재하지 않거나 비정상적 접근입니다."})
+    const { characterId } = req.params;
+    const { accountId } = req.user;
+    if (!accountId)
+      return res.status(401).json({ message: '계정 정보가 존재하지 않거나 비정상적 접근입니다.' });
 
-  const character = await prisma.characters.findFirst({
-    where : { characterId : +characterId },
-    select : {
-      characterId : true,
-      characterName : true,
-      createdAt : true,
-    }
-  });
-
-  if (!character)
-    return res.status(404).json({message : "캐릭터가 존재하지 않습니다"})
-  
-  const deleteCharacter = await tx.characters.delete({
-     where : { characterId : +characterId }
+    const character = await userDataClient.characters.findFirst({
+      where: { characterId: +characterId },
+      select: {
+        characterId: true,
+        characterName: true,
+        createdAt: true,
+      },
     });
 
-  return res.status(200).json({message : `${character.characterName} 캐릭터가 삭제되었습니다.`,})
-  } catch(err) {
-   next(err); 
+    if (!character) return res.status(404).json({ message: '캐릭터가 존재하지 않습니다' });
+
+    const deleteCharacter = await userDataClient.characters.delete({
+      where: { characterId: +characterId },
+    });
+
+    return res.status(200).json({ message: `${character.characterName} 캐릭터가 삭제되었습니다.` });
+  } catch (err) {
+    next(err);
   }
 });
 

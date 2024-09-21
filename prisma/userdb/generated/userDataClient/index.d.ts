@@ -40,27 +40,6 @@ export type InventoryItem = $Result.DefaultSelection<Prisma.$InventoryItemPayloa
 export type EquippedItem = $Result.DefaultSelection<Prisma.$EquippedItemPayload>
 
 /**
- * Enums
- */
-export namespace $Enums {
-  export const ItemType: {
-  WEAPON: 'WEAPON',
-  ARMOUR: 'ARMOUR',
-  GLOVE: 'GLOVE',
-  SHOES: 'SHOES',
-  ACCESORY: 'ACCESORY',
-  DISPOSABLE: 'DISPOSABLE'
-};
-
-export type ItemType = (typeof ItemType)[keyof typeof ItemType]
-
-}
-
-export type ItemType = $Enums.ItemType
-
-export const ItemType: typeof $Enums.ItemType
-
-/**
  * ##  Prisma Client ʲˢ
  * 
  * Type-safe database client for TypeScript & Node.js
@@ -2237,7 +2216,6 @@ export namespace Prisma {
   export type CharactersAvgAggregateOutputType = {
     characterId: number | null
     accountId: number | null
-    inventoryCount: number | null
     hp: number | null
     atk: number | null
     money: number | null
@@ -2246,7 +2224,6 @@ export namespace Prisma {
   export type CharactersSumAggregateOutputType = {
     characterId: number | null
     accountId: number | null
-    inventoryCount: number | null
     hp: number | null
     atk: number | null
     money: number | null
@@ -2256,7 +2233,6 @@ export namespace Prisma {
     characterId: number | null
     accountId: number | null
     characterName: string | null
-    inventoryCount: number | null
     hp: number | null
     atk: number | null
     money: number | null
@@ -2268,7 +2244,6 @@ export namespace Prisma {
     characterId: number | null
     accountId: number | null
     characterName: string | null
-    inventoryCount: number | null
     hp: number | null
     atk: number | null
     money: number | null
@@ -2280,7 +2255,6 @@ export namespace Prisma {
     characterId: number
     accountId: number
     characterName: number
-    inventoryCount: number
     hp: number
     atk: number
     money: number
@@ -2293,7 +2267,6 @@ export namespace Prisma {
   export type CharactersAvgAggregateInputType = {
     characterId?: true
     accountId?: true
-    inventoryCount?: true
     hp?: true
     atk?: true
     money?: true
@@ -2302,7 +2275,6 @@ export namespace Prisma {
   export type CharactersSumAggregateInputType = {
     characterId?: true
     accountId?: true
-    inventoryCount?: true
     hp?: true
     atk?: true
     money?: true
@@ -2312,7 +2284,6 @@ export namespace Prisma {
     characterId?: true
     accountId?: true
     characterName?: true
-    inventoryCount?: true
     hp?: true
     atk?: true
     money?: true
@@ -2324,7 +2295,6 @@ export namespace Prisma {
     characterId?: true
     accountId?: true
     characterName?: true
-    inventoryCount?: true
     hp?: true
     atk?: true
     money?: true
@@ -2336,7 +2306,6 @@ export namespace Prisma {
     characterId?: true
     accountId?: true
     characterName?: true
-    inventoryCount?: true
     hp?: true
     atk?: true
     money?: true
@@ -2435,7 +2404,6 @@ export namespace Prisma {
     characterId: number
     accountId: number
     characterName: string
-    inventoryCount: number
     hp: number
     atk: number
     money: number
@@ -2466,7 +2434,6 @@ export namespace Prisma {
     characterId?: boolean
     accountId?: boolean
     characterName?: boolean
-    inventoryCount?: boolean
     hp?: boolean
     atk?: boolean
     money?: boolean
@@ -2483,7 +2450,6 @@ export namespace Prisma {
     characterId?: boolean
     accountId?: boolean
     characterName?: boolean
-    inventoryCount?: boolean
     hp?: boolean
     atk?: boolean
     money?: boolean
@@ -2509,7 +2475,6 @@ export namespace Prisma {
       characterId: number
       accountId: number
       characterName: string
-      inventoryCount: number
       hp: number
       atk: number
       money: number
@@ -2890,7 +2855,6 @@ export namespace Prisma {
     readonly characterId: FieldRef<"Characters", 'Int'>
     readonly accountId: FieldRef<"Characters", 'Int'>
     readonly characterName: FieldRef<"Characters", 'String'>
-    readonly inventoryCount: FieldRef<"Characters", 'Int'>
     readonly hp: FieldRef<"Characters", 'Int'>
     readonly atk: FieldRef<"Characters", 'Int'>
     readonly money: FieldRef<"Characters", 'Int'>
@@ -3264,39 +3228,26 @@ export namespace Prisma {
   export type InventoryAvgAggregateOutputType = {
     inventoryId: number | null
     characterId: number | null
-    itemId: number | null
-    itemCount: number | null
   }
 
   export type InventorySumAggregateOutputType = {
     inventoryId: number | null
     characterId: number | null
-    itemId: number | null
-    itemCount: number | null
   }
 
   export type InventoryMinAggregateOutputType = {
     inventoryId: number | null
     characterId: number | null
-    itemId: number | null
-    itemName: string | null
-    itemCount: number | null
   }
 
   export type InventoryMaxAggregateOutputType = {
     inventoryId: number | null
     characterId: number | null
-    itemId: number | null
-    itemName: string | null
-    itemCount: number | null
   }
 
   export type InventoryCountAggregateOutputType = {
     inventoryId: number
     characterId: number
-    itemId: number
-    itemName: number
-    itemCount: number
     _all: number
   }
 
@@ -3304,39 +3255,26 @@ export namespace Prisma {
   export type InventoryAvgAggregateInputType = {
     inventoryId?: true
     characterId?: true
-    itemId?: true
-    itemCount?: true
   }
 
   export type InventorySumAggregateInputType = {
     inventoryId?: true
     characterId?: true
-    itemId?: true
-    itemCount?: true
   }
 
   export type InventoryMinAggregateInputType = {
     inventoryId?: true
     characterId?: true
-    itemId?: true
-    itemName?: true
-    itemCount?: true
   }
 
   export type InventoryMaxAggregateInputType = {
     inventoryId?: true
     characterId?: true
-    itemId?: true
-    itemName?: true
-    itemCount?: true
   }
 
   export type InventoryCountAggregateInputType = {
     inventoryId?: true
     characterId?: true
-    itemId?: true
-    itemName?: true
-    itemCount?: true
     _all?: true
   }
 
@@ -3429,9 +3367,6 @@ export namespace Prisma {
   export type InventoryGroupByOutputType = {
     inventoryId: number
     characterId: number
-    itemId: number
-    itemName: string
-    itemCount: number
     _count: InventoryCountAggregateOutputType | null
     _avg: InventoryAvgAggregateOutputType | null
     _sum: InventorySumAggregateOutputType | null
@@ -3456,9 +3391,6 @@ export namespace Prisma {
   export type InventorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     inventoryId?: boolean
     characterId?: boolean
-    itemId?: boolean
-    itemName?: boolean
-    itemCount?: boolean
     characters?: boolean | CharactersDefaultArgs<ExtArgs>
     inventoryitem?: boolean | Inventory$inventoryitemArgs<ExtArgs>
     _count?: boolean | InventoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -3468,9 +3400,6 @@ export namespace Prisma {
   export type InventorySelectScalar = {
     inventoryId?: boolean
     characterId?: boolean
-    itemId?: boolean
-    itemName?: boolean
-    itemCount?: boolean
   }
 
   export type InventoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3488,9 +3417,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       inventoryId: number
       characterId: number
-      itemId: number
-      itemName: string
-      itemCount: number
     }, ExtArgs["result"]["inventory"]>
     composites: {}
   }
@@ -3864,9 +3790,6 @@ export namespace Prisma {
   interface InventoryFieldRefs {
     readonly inventoryId: FieldRef<"Inventory", 'Int'>
     readonly characterId: FieldRef<"Inventory", 'Int'>
-    readonly itemId: FieldRef<"Inventory", 'Int'>
-    readonly itemName: FieldRef<"Inventory", 'String'>
-    readonly itemCount: FieldRef<"Inventory", 'Int'>
   }
     
 
@@ -4215,26 +4138,36 @@ export namespace Prisma {
   export type InventoryItemAvgAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
+    itemCode: number | null
+    itemCount: number | null
   }
 
   export type InventoryItemSumAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
+    itemCode: number | null
+    itemCount: number | null
   }
 
   export type InventoryItemMinAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
+    itemCode: number | null
+    itemCount: number | null
   }
 
   export type InventoryItemMaxAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
+    itemCode: number | null
+    itemCount: number | null
   }
 
   export type InventoryItemCountAggregateOutputType = {
     inventoryItemId: number
     inventoryId: number
+    itemCode: number
+    itemCount: number
     _all: number
   }
 
@@ -4242,26 +4175,36 @@ export namespace Prisma {
   export type InventoryItemAvgAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
+    itemCode?: true
+    itemCount?: true
   }
 
   export type InventoryItemSumAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
+    itemCode?: true
+    itemCount?: true
   }
 
   export type InventoryItemMinAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
+    itemCode?: true
+    itemCount?: true
   }
 
   export type InventoryItemMaxAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
+    itemCode?: true
+    itemCount?: true
   }
 
   export type InventoryItemCountAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
+    itemCode?: true
+    itemCount?: true
     _all?: true
   }
 
@@ -4354,6 +4297,8 @@ export namespace Prisma {
   export type InventoryItemGroupByOutputType = {
     inventoryItemId: number
     inventoryId: number
+    itemCode: number
+    itemCount: number
     _count: InventoryItemCountAggregateOutputType | null
     _avg: InventoryItemAvgAggregateOutputType | null
     _sum: InventoryItemSumAggregateOutputType | null
@@ -4378,6 +4323,8 @@ export namespace Prisma {
   export type InventoryItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     inventoryItemId?: boolean
     inventoryId?: boolean
+    itemCode?: boolean
+    itemCount?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
 
@@ -4385,6 +4332,8 @@ export namespace Prisma {
   export type InventoryItemSelectScalar = {
     inventoryItemId?: boolean
     inventoryId?: boolean
+    itemCode?: boolean
+    itemCount?: boolean
   }
 
   export type InventoryItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4399,6 +4348,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       inventoryItemId: number
       inventoryId: number
+      itemCode: number
+      itemCount: number
     }, ExtArgs["result"]["inventoryItem"]>
     composites: {}
   }
@@ -4771,6 +4722,8 @@ export namespace Prisma {
   interface InventoryItemFieldRefs {
     readonly inventoryItemId: FieldRef<"InventoryItem", 'Int'>
     readonly inventoryId: FieldRef<"InventoryItem", 'Int'>
+    readonly itemCode: FieldRef<"InventoryItem", 'Int'>
+    readonly itemCount: FieldRef<"InventoryItem", 'Int'>
   }
     
 
@@ -5110,21 +5063,18 @@ export namespace Prisma {
     equippedItemId: number | null
     characterId: number | null
     equippedItemName: string | null
-    type: $Enums.ItemType | null
   }
 
   export type EquippedItemMaxAggregateOutputType = {
     equippedItemId: number | null
     characterId: number | null
     equippedItemName: string | null
-    type: $Enums.ItemType | null
   }
 
   export type EquippedItemCountAggregateOutputType = {
     equippedItemId: number
     characterId: number
     equippedItemName: number
-    type: number
     _all: number
   }
 
@@ -5143,21 +5093,18 @@ export namespace Prisma {
     equippedItemId?: true
     characterId?: true
     equippedItemName?: true
-    type?: true
   }
 
   export type EquippedItemMaxAggregateInputType = {
     equippedItemId?: true
     characterId?: true
     equippedItemName?: true
-    type?: true
   }
 
   export type EquippedItemCountAggregateInputType = {
     equippedItemId?: true
     characterId?: true
     equippedItemName?: true
-    type?: true
     _all?: true
   }
 
@@ -5251,7 +5198,6 @@ export namespace Prisma {
     equippedItemId: number
     characterId: number
     equippedItemName: string
-    type: $Enums.ItemType
     _count: EquippedItemCountAggregateOutputType | null
     _avg: EquippedItemAvgAggregateOutputType | null
     _sum: EquippedItemSumAggregateOutputType | null
@@ -5277,7 +5223,6 @@ export namespace Prisma {
     equippedItemId?: boolean
     characterId?: boolean
     equippedItemName?: boolean
-    type?: boolean
     characters?: boolean | CharactersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["equippedItem"]>
 
@@ -5286,7 +5231,6 @@ export namespace Prisma {
     equippedItemId?: boolean
     characterId?: boolean
     equippedItemName?: boolean
-    type?: boolean
   }
 
   export type EquippedItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5302,7 +5246,6 @@ export namespace Prisma {
       equippedItemId: number
       characterId: number
       equippedItemName: string
-      type: $Enums.ItemType
     }, ExtArgs["result"]["equippedItem"]>
     composites: {}
   }
@@ -5676,7 +5619,6 @@ export namespace Prisma {
     readonly equippedItemId: FieldRef<"EquippedItem", 'Int'>
     readonly characterId: FieldRef<"EquippedItem", 'Int'>
     readonly equippedItemName: FieldRef<"EquippedItem", 'String'>
-    readonly type: FieldRef<"EquippedItem", 'ItemType'>
   }
     
 
@@ -6019,7 +5961,6 @@ export namespace Prisma {
     characterId: 'characterId',
     accountId: 'accountId',
     characterName: 'characterName',
-    inventoryCount: 'inventoryCount',
     hp: 'hp',
     atk: 'atk',
     money: 'money',
@@ -6032,10 +5973,7 @@ export namespace Prisma {
 
   export const InventoryScalarFieldEnum: {
     inventoryId: 'inventoryId',
-    characterId: 'characterId',
-    itemId: 'itemId',
-    itemName: 'itemName',
-    itemCount: 'itemCount'
+    characterId: 'characterId'
   };
 
   export type InventoryScalarFieldEnum = (typeof InventoryScalarFieldEnum)[keyof typeof InventoryScalarFieldEnum]
@@ -6043,7 +5981,9 @@ export namespace Prisma {
 
   export const InventoryItemScalarFieldEnum: {
     inventoryItemId: 'inventoryItemId',
-    inventoryId: 'inventoryId'
+    inventoryId: 'inventoryId',
+    itemCode: 'itemCode',
+    itemCount: 'itemCount'
   };
 
   export type InventoryItemScalarFieldEnum = (typeof InventoryItemScalarFieldEnum)[keyof typeof InventoryItemScalarFieldEnum]
@@ -6052,8 +5992,7 @@ export namespace Prisma {
   export const EquippedItemScalarFieldEnum: {
     equippedItemId: 'equippedItemId',
     characterId: 'characterId',
-    equippedItemName: 'equippedItemName',
-    type: 'type'
+    equippedItemName: 'equippedItemName'
   };
 
   export type EquippedItemScalarFieldEnum = (typeof EquippedItemScalarFieldEnum)[keyof typeof EquippedItemScalarFieldEnum]
@@ -6090,13 +6029,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'ItemType'
-   */
-  export type EnumItemTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemType'>
     
 
 
@@ -6174,7 +6106,6 @@ export namespace Prisma {
     characterId?: IntFilter<"Characters"> | number
     accountId?: IntFilter<"Characters"> | number
     characterName?: StringFilter<"Characters"> | string
-    inventoryCount?: IntFilter<"Characters"> | number
     hp?: IntFilter<"Characters"> | number
     atk?: IntFilter<"Characters"> | number
     money?: IntFilter<"Characters"> | number
@@ -6189,7 +6120,6 @@ export namespace Prisma {
     characterId?: SortOrder
     accountId?: SortOrder
     characterName?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6207,7 +6137,6 @@ export namespace Prisma {
     OR?: CharactersWhereInput[]
     NOT?: CharactersWhereInput | CharactersWhereInput[]
     accountId?: IntFilter<"Characters"> | number
-    inventoryCount?: IntFilter<"Characters"> | number
     hp?: IntFilter<"Characters"> | number
     atk?: IntFilter<"Characters"> | number
     money?: IntFilter<"Characters"> | number
@@ -6222,7 +6151,6 @@ export namespace Prisma {
     characterId?: SortOrder
     accountId?: SortOrder
     characterName?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6242,7 +6170,6 @@ export namespace Prisma {
     characterId?: IntWithAggregatesFilter<"Characters"> | number
     accountId?: IntWithAggregatesFilter<"Characters"> | number
     characterName?: StringWithAggregatesFilter<"Characters"> | string
-    inventoryCount?: IntWithAggregatesFilter<"Characters"> | number
     hp?: IntWithAggregatesFilter<"Characters"> | number
     atk?: IntWithAggregatesFilter<"Characters"> | number
     money?: IntWithAggregatesFilter<"Characters"> | number
@@ -6256,9 +6183,6 @@ export namespace Prisma {
     NOT?: InventoryWhereInput | InventoryWhereInput[]
     inventoryId?: IntFilter<"Inventory"> | number
     characterId?: IntFilter<"Inventory"> | number
-    itemId?: IntFilter<"Inventory"> | number
-    itemName?: StringFilter<"Inventory"> | string
-    itemCount?: IntFilter<"Inventory"> | number
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
     inventoryitem?: InventoryItemListRelationFilter
   }
@@ -6266,9 +6190,6 @@ export namespace Prisma {
   export type InventoryOrderByWithRelationInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemName?: SortOrder
-    itemCount?: SortOrder
     characters?: CharactersOrderByWithRelationInput
     inventoryitem?: InventoryItemOrderByRelationAggregateInput
   }
@@ -6279,9 +6200,6 @@ export namespace Prisma {
     OR?: InventoryWhereInput[]
     NOT?: InventoryWhereInput | InventoryWhereInput[]
     characterId?: IntFilter<"Inventory"> | number
-    itemId?: IntFilter<"Inventory"> | number
-    itemName?: StringFilter<"Inventory"> | string
-    itemCount?: IntFilter<"Inventory"> | number
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
     inventoryitem?: InventoryItemListRelationFilter
   }, "inventoryId">
@@ -6289,9 +6207,6 @@ export namespace Prisma {
   export type InventoryOrderByWithAggregationInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemName?: SortOrder
-    itemCount?: SortOrder
     _count?: InventoryCountOrderByAggregateInput
     _avg?: InventoryAvgOrderByAggregateInput
     _max?: InventoryMaxOrderByAggregateInput
@@ -6305,9 +6220,6 @@ export namespace Prisma {
     NOT?: InventoryScalarWhereWithAggregatesInput | InventoryScalarWhereWithAggregatesInput[]
     inventoryId?: IntWithAggregatesFilter<"Inventory"> | number
     characterId?: IntWithAggregatesFilter<"Inventory"> | number
-    itemId?: IntWithAggregatesFilter<"Inventory"> | number
-    itemName?: StringWithAggregatesFilter<"Inventory"> | string
-    itemCount?: IntWithAggregatesFilter<"Inventory"> | number
   }
 
   export type InventoryItemWhereInput = {
@@ -6316,12 +6228,16 @@ export namespace Prisma {
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
     inventoryItemId?: IntFilter<"InventoryItem"> | number
     inventoryId?: IntFilter<"InventoryItem"> | number
+    itemCode?: IntFilter<"InventoryItem"> | number
+    itemCount?: IntFilter<"InventoryItem"> | number
     inventory?: XOR<InventoryRelationFilter, InventoryWhereInput>
   }
 
   export type InventoryItemOrderByWithRelationInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
     inventory?: InventoryOrderByWithRelationInput
   }
 
@@ -6331,12 +6247,16 @@ export namespace Prisma {
     OR?: InventoryItemWhereInput[]
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
     inventoryId?: IntFilter<"InventoryItem"> | number
+    itemCode?: IntFilter<"InventoryItem"> | number
+    itemCount?: IntFilter<"InventoryItem"> | number
     inventory?: XOR<InventoryRelationFilter, InventoryWhereInput>
   }, "inventoryItemId">
 
   export type InventoryItemOrderByWithAggregationInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
     _count?: InventoryItemCountOrderByAggregateInput
     _avg?: InventoryItemAvgOrderByAggregateInput
     _max?: InventoryItemMaxOrderByAggregateInput
@@ -6350,6 +6270,8 @@ export namespace Prisma {
     NOT?: InventoryItemScalarWhereWithAggregatesInput | InventoryItemScalarWhereWithAggregatesInput[]
     inventoryItemId?: IntWithAggregatesFilter<"InventoryItem"> | number
     inventoryId?: IntWithAggregatesFilter<"InventoryItem"> | number
+    itemCode?: IntWithAggregatesFilter<"InventoryItem"> | number
+    itemCount?: IntWithAggregatesFilter<"InventoryItem"> | number
   }
 
   export type EquippedItemWhereInput = {
@@ -6359,7 +6281,6 @@ export namespace Prisma {
     equippedItemId?: IntFilter<"EquippedItem"> | number
     characterId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
-    type?: EnumItemTypeFilter<"EquippedItem"> | $Enums.ItemType
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
   }
 
@@ -6367,7 +6288,6 @@ export namespace Prisma {
     equippedItemId?: SortOrder
     characterId?: SortOrder
     equippedItemName?: SortOrder
-    type?: SortOrder
     characters?: CharactersOrderByWithRelationInput
   }
 
@@ -6378,7 +6298,6 @@ export namespace Prisma {
     NOT?: EquippedItemWhereInput | EquippedItemWhereInput[]
     characterId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
-    type?: EnumItemTypeFilter<"EquippedItem"> | $Enums.ItemType
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
   }, "equippedItemId">
 
@@ -6386,7 +6305,6 @@ export namespace Prisma {
     equippedItemId?: SortOrder
     characterId?: SortOrder
     equippedItemName?: SortOrder
-    type?: SortOrder
     _count?: EquippedItemCountOrderByAggregateInput
     _avg?: EquippedItemAvgOrderByAggregateInput
     _max?: EquippedItemMaxOrderByAggregateInput
@@ -6401,7 +6319,6 @@ export namespace Prisma {
     equippedItemId?: IntWithAggregatesFilter<"EquippedItem"> | number
     characterId?: IntWithAggregatesFilter<"EquippedItem"> | number
     equippedItemName?: StringWithAggregatesFilter<"EquippedItem"> | string
-    type?: EnumItemTypeWithAggregatesFilter<"EquippedItem"> | $Enums.ItemType
   }
 
   export type AccountCreateInput = {
@@ -6463,7 +6380,6 @@ export namespace Prisma {
 
   export type CharactersCreateInput = {
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -6478,7 +6394,6 @@ export namespace Prisma {
     characterId?: number
     accountId: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -6490,7 +6405,6 @@ export namespace Prisma {
 
   export type CharactersUpdateInput = {
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -6505,7 +6419,6 @@ export namespace Prisma {
     characterId?: IntFieldUpdateOperationsInput | number
     accountId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -6519,7 +6432,6 @@ export namespace Prisma {
     characterId?: number
     accountId: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -6529,7 +6441,6 @@ export namespace Prisma {
 
   export type CharactersUpdateManyMutationInput = {
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -6541,7 +6452,6 @@ export namespace Prisma {
     characterId?: IntFieldUpdateOperationsInput | number
     accountId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -6550,9 +6460,6 @@ export namespace Prisma {
   }
 
   export type InventoryCreateInput = {
-    itemId: number
-    itemName: string
-    itemCount: number
     characters: CharactersCreateNestedOneWithoutInventoryInput
     inventoryitem?: InventoryItemCreateNestedManyWithoutInventoryInput
   }
@@ -6560,16 +6467,10 @@ export namespace Prisma {
   export type InventoryUncheckedCreateInput = {
     inventoryId?: number
     characterId: number
-    itemId: number
-    itemName: string
-    itemCount: number
     inventoryitem?: InventoryItemUncheckedCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUpdateInput = {
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
     characters?: CharactersUpdateOneRequiredWithoutInventoryNestedInput
     inventoryitem?: InventoryItemUpdateManyWithoutInventoryNestedInput
   }
@@ -6577,71 +6478,70 @@ export namespace Prisma {
   export type InventoryUncheckedUpdateInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
     inventoryitem?: InventoryItemUncheckedUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryCreateManyInput = {
     inventoryId?: number
     characterId: number
-    itemId: number
-    itemName: string
-    itemCount: number
   }
 
   export type InventoryUpdateManyMutationInput = {
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
+
   }
 
   export type InventoryUncheckedUpdateManyInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemCreateInput = {
-    inventoryItemId: number
+    itemCode: number
+    itemCount: number
     inventory: InventoryCreateNestedOneWithoutInventoryitemInput
   }
 
   export type InventoryItemUncheckedCreateInput = {
-    inventoryItemId: number
+    inventoryItemId?: number
     inventoryId: number
+    itemCode: number
+    itemCount: number
   }
 
   export type InventoryItemUpdateInput = {
-    inventoryItemId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
     inventory?: InventoryUpdateOneRequiredWithoutInventoryitemNestedInput
   }
 
   export type InventoryItemUncheckedUpdateInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemCreateManyInput = {
-    inventoryItemId: number
+    inventoryItemId?: number
     inventoryId: number
+    itemCode: number
+    itemCount: number
   }
 
   export type InventoryItemUpdateManyMutationInput = {
-    inventoryItemId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateManyInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type EquippedItemCreateInput = {
     equippedItemName: string
-    type: $Enums.ItemType
     characters: CharactersCreateNestedOneWithoutEquippeditemInput
   }
 
@@ -6649,12 +6549,10 @@ export namespace Prisma {
     equippedItemId?: number
     characterId: number
     equippedItemName: string
-    type: $Enums.ItemType
   }
 
   export type EquippedItemUpdateInput = {
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
     characters?: CharactersUpdateOneRequiredWithoutEquippeditemNestedInput
   }
 
@@ -6662,26 +6560,22 @@ export namespace Prisma {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type EquippedItemCreateManyInput = {
     equippedItemId?: number
     characterId: number
     equippedItemName: string
-    type: $Enums.ItemType
   }
 
   export type EquippedItemUpdateManyMutationInput = {
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type EquippedItemUncheckedUpdateManyInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6838,7 +6732,6 @@ export namespace Prisma {
     characterId?: SortOrder
     accountId?: SortOrder
     characterName?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6849,7 +6742,6 @@ export namespace Prisma {
   export type CharactersAvgOrderByAggregateInput = {
     characterId?: SortOrder
     accountId?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6859,7 +6751,6 @@ export namespace Prisma {
     characterId?: SortOrder
     accountId?: SortOrder
     characterName?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6871,7 +6762,6 @@ export namespace Prisma {
     characterId?: SortOrder
     accountId?: SortOrder
     characterName?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6882,7 +6772,6 @@ export namespace Prisma {
   export type CharactersSumOrderByAggregateInput = {
     characterId?: SortOrder
     accountId?: SortOrder
-    inventoryCount?: SortOrder
     hp?: SortOrder
     atk?: SortOrder
     money?: SortOrder
@@ -6906,39 +6795,26 @@ export namespace Prisma {
   export type InventoryCountOrderByAggregateInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemName?: SortOrder
-    itemCount?: SortOrder
   }
 
   export type InventoryAvgOrderByAggregateInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemCount?: SortOrder
   }
 
   export type InventoryMaxOrderByAggregateInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemName?: SortOrder
-    itemCount?: SortOrder
   }
 
   export type InventoryMinOrderByAggregateInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemName?: SortOrder
-    itemCount?: SortOrder
   }
 
   export type InventorySumOrderByAggregateInput = {
     inventoryId?: SortOrder
     characterId?: SortOrder
-    itemId?: SortOrder
-    itemCount?: SortOrder
   }
 
   export type InventoryRelationFilter = {
@@ -6949,40 +6825,42 @@ export namespace Prisma {
   export type InventoryItemCountOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
   }
 
   export type InventoryItemAvgOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
   }
 
   export type InventoryItemMaxOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
   }
 
   export type InventoryItemMinOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
+    itemCode?: SortOrder
+    itemCount?: SortOrder
   }
 
   export type InventoryItemSumOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-  }
-
-  export type EnumItemTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ItemType | EnumItemTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ItemType[]
-    notIn?: $Enums.ItemType[]
-    not?: NestedEnumItemTypeFilter<$PrismaModel> | $Enums.ItemType
+    itemCode?: SortOrder
+    itemCount?: SortOrder
   }
 
   export type EquippedItemCountOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
     equippedItemName?: SortOrder
-    type?: SortOrder
   }
 
   export type EquippedItemAvgOrderByAggregateInput = {
@@ -6994,29 +6872,17 @@ export namespace Prisma {
     equippedItemId?: SortOrder
     characterId?: SortOrder
     equippedItemName?: SortOrder
-    type?: SortOrder
   }
 
   export type EquippedItemMinOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
     equippedItemName?: SortOrder
-    type?: SortOrder
   }
 
   export type EquippedItemSumOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
-  }
-
-  export type EnumItemTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ItemType | EnumItemTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ItemType[]
-    notIn?: $Enums.ItemType[]
-    not?: NestedEnumItemTypeWithAggregatesFilter<$PrismaModel> | $Enums.ItemType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumItemTypeFilter<$PrismaModel>
-    _max?: NestedEnumItemTypeFilter<$PrismaModel>
   }
 
   export type CharactersCreateNestedManyWithoutAccountInput = {
@@ -7251,10 +7117,6 @@ export namespace Prisma {
     connect?: CharactersWhereUniqueInput
   }
 
-  export type EnumItemTypeFieldUpdateOperationsInput = {
-    set?: $Enums.ItemType
-  }
-
   export type CharactersUpdateOneRequiredWithoutEquippeditemNestedInput = {
     create?: XOR<CharactersCreateWithoutEquippeditemInput, CharactersUncheckedCreateWithoutEquippeditemInput>
     connectOrCreate?: CharactersCreateOrConnectWithoutEquippeditemInput
@@ -7357,26 +7219,8 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumItemTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ItemType | EnumItemTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ItemType[]
-    notIn?: $Enums.ItemType[]
-    not?: NestedEnumItemTypeFilter<$PrismaModel> | $Enums.ItemType
-  }
-
-  export type NestedEnumItemTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ItemType | EnumItemTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ItemType[]
-    notIn?: $Enums.ItemType[]
-    not?: NestedEnumItemTypeWithAggregatesFilter<$PrismaModel> | $Enums.ItemType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumItemTypeFilter<$PrismaModel>
-    _max?: NestedEnumItemTypeFilter<$PrismaModel>
-  }
-
   export type CharactersCreateWithoutAccountInput = {
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7389,7 +7233,6 @@ export namespace Prisma {
   export type CharactersUncheckedCreateWithoutAccountInput = {
     characterId?: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7432,7 +7275,6 @@ export namespace Prisma {
     characterId?: IntFilter<"Characters"> | number
     accountId?: IntFilter<"Characters"> | number
     characterName?: StringFilter<"Characters"> | string
-    inventoryCount?: IntFilter<"Characters"> | number
     hp?: IntFilter<"Characters"> | number
     atk?: IntFilter<"Characters"> | number
     money?: IntFilter<"Characters"> | number
@@ -7461,17 +7303,11 @@ export namespace Prisma {
   }
 
   export type InventoryCreateWithoutCharactersInput = {
-    itemId: number
-    itemName: string
-    itemCount: number
     inventoryitem?: InventoryItemCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateWithoutCharactersInput = {
     inventoryId?: number
-    itemId: number
-    itemName: string
-    itemCount: number
     inventoryitem?: InventoryItemUncheckedCreateNestedManyWithoutInventoryInput
   }
 
@@ -7487,13 +7323,11 @@ export namespace Prisma {
 
   export type EquippedItemCreateWithoutCharactersInput = {
     equippedItemName: string
-    type: $Enums.ItemType
   }
 
   export type EquippedItemUncheckedCreateWithoutCharactersInput = {
     equippedItemId?: number
     equippedItemName: string
-    type: $Enums.ItemType
   }
 
   export type EquippedItemCreateOrConnectWithoutCharactersInput = {
@@ -7554,9 +7388,6 @@ export namespace Prisma {
     NOT?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
     inventoryId?: IntFilter<"Inventory"> | number
     characterId?: IntFilter<"Inventory"> | number
-    itemId?: IntFilter<"Inventory"> | number
-    itemName?: StringFilter<"Inventory"> | string
-    itemCount?: IntFilter<"Inventory"> | number
   }
 
   export type EquippedItemUpsertWithWhereUniqueWithoutCharactersInput = {
@@ -7582,12 +7413,10 @@ export namespace Prisma {
     equippedItemId?: IntFilter<"EquippedItem"> | number
     characterId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
-    type?: EnumItemTypeFilter<"EquippedItem"> | $Enums.ItemType
   }
 
   export type CharactersCreateWithoutInventoryInput = {
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7601,7 +7430,6 @@ export namespace Prisma {
     characterId?: number
     accountId: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7616,11 +7444,14 @@ export namespace Prisma {
   }
 
   export type InventoryItemCreateWithoutInventoryInput = {
-    inventoryItemId: number
+    itemCode: number
+    itemCount: number
   }
 
   export type InventoryItemUncheckedCreateWithoutInventoryInput = {
-    inventoryItemId: number
+    inventoryItemId?: number
+    itemCode: number
+    itemCount: number
   }
 
   export type InventoryItemCreateOrConnectWithoutInventoryInput = {
@@ -7646,7 +7477,6 @@ export namespace Prisma {
 
   export type CharactersUpdateWithoutInventoryInput = {
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7660,7 +7490,6 @@ export namespace Prisma {
     characterId?: IntFieldUpdateOperationsInput | number
     accountId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7691,21 +7520,17 @@ export namespace Prisma {
     NOT?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
     inventoryItemId?: IntFilter<"InventoryItem"> | number
     inventoryId?: IntFilter<"InventoryItem"> | number
+    itemCode?: IntFilter<"InventoryItem"> | number
+    itemCount?: IntFilter<"InventoryItem"> | number
   }
 
   export type InventoryCreateWithoutInventoryitemInput = {
-    itemId: number
-    itemName: string
-    itemCount: number
     characters: CharactersCreateNestedOneWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateWithoutInventoryitemInput = {
     inventoryId?: number
     characterId: number
-    itemId: number
-    itemName: string
-    itemCount: number
   }
 
   export type InventoryCreateOrConnectWithoutInventoryitemInput = {
@@ -7725,23 +7550,16 @@ export namespace Prisma {
   }
 
   export type InventoryUpdateWithoutInventoryitemInput = {
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
     characters?: CharactersUpdateOneRequiredWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateWithoutInventoryitemInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type CharactersCreateWithoutEquippeditemInput = {
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7755,7 +7573,6 @@ export namespace Prisma {
     characterId?: number
     accountId: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7782,7 +7599,6 @@ export namespace Prisma {
 
   export type CharactersUpdateWithoutEquippeditemInput = {
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7796,7 +7612,6 @@ export namespace Prisma {
     characterId?: IntFieldUpdateOperationsInput | number
     accountId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7808,7 +7623,6 @@ export namespace Prisma {
   export type CharactersCreateManyAccountInput = {
     characterId?: number
     characterName: string
-    inventoryCount?: number
     hp?: number
     atk?: number
     money?: number
@@ -7818,7 +7632,6 @@ export namespace Prisma {
 
   export type CharactersUpdateWithoutAccountInput = {
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7831,7 +7644,6 @@ export namespace Prisma {
   export type CharactersUncheckedUpdateWithoutAccountInput = {
     characterId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7844,7 +7656,6 @@ export namespace Prisma {
   export type CharactersUncheckedUpdateManyWithoutAccountInput = {
     characterId?: IntFieldUpdateOperationsInput | number
     characterName?: StringFieldUpdateOperationsInput | string
-    inventoryCount?: IntFieldUpdateOperationsInput | number
     hp?: IntFieldUpdateOperationsInput | number
     atk?: IntFieldUpdateOperationsInput | number
     money?: IntFieldUpdateOperationsInput | number
@@ -7854,70 +7665,61 @@ export namespace Prisma {
 
   export type InventoryCreateManyCharactersInput = {
     inventoryId?: number
-    itemId: number
-    itemName: string
-    itemCount: number
   }
 
   export type EquippedItemCreateManyCharactersInput = {
     equippedItemId?: number
     equippedItemName: string
-    type: $Enums.ItemType
   }
 
   export type InventoryUpdateWithoutCharactersInput = {
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
     inventoryitem?: InventoryItemUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateWithoutCharactersInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
     inventoryitem?: InventoryItemUncheckedUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateManyWithoutCharactersInput = {
     inventoryId?: IntFieldUpdateOperationsInput | number
-    itemId?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type EquippedItemUpdateWithoutCharactersInput = {
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type EquippedItemUncheckedUpdateWithoutCharactersInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type EquippedItemUncheckedUpdateManyWithoutCharactersInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
-    type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
   }
 
   export type InventoryItemCreateManyInventoryInput = {
-    inventoryItemId: number
+    inventoryItemId?: number
+    itemCode: number
+    itemCount: number
   }
 
   export type InventoryItemUpdateWithoutInventoryInput = {
-    inventoryItemId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateWithoutInventoryInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateManyWithoutInventoryInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
+    itemCode?: IntFieldUpdateOperationsInput | number
+    itemCount?: IntFieldUpdateOperationsInput | number
   }
 
 

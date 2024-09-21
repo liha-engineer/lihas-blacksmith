@@ -14,18 +14,6 @@ datasource userdb {
   url      = env("USERDB_URL")
 }
 
-// enum 타입을 줄 수도 있다!
-// 인벤토리 칸수를 제한하고 싶으면 inventory로 default를 정해주는 것도 좋다 
-
-enum ItemType {
-  WEAPON
-  ARMOUR
-  GLOVE
-  SHOES
-  ACCESORY
-  DISPOSABLE
-}
-
 model Account {
   accountId Int @id @default(autoincrement()) 
   id String @unique 
@@ -41,36 +29,36 @@ model Characters {
   characterId Int @id @default(autoincrement()) 
   accountId Int 
   characterName String @unique 
-  inventoryCount Int @default(10) 
   hp Int @default(500) 
   atk Int @default(100) 
   money Int @default(10000) 
   createdAt DateTime @default(now()) 
   updatedAt DateTime @updatedAt 
 
-  account Account @relation(fields: [accountId], references: [accountId], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [accountId], onDelete: Cascade, onUpdate: Cascade)
   inventory Inventory[]
   equippeditem EquippedItem[]
   @@map("Characters")
 }
 
+// 얘는 큰 배낭 하나고
 model Inventory { 
   inventoryId Int @id @default(autoincrement())
   characterId Int 
-  itemId Int 
-  itemName String 
-  itemCount Int
 
-  characters Characters @relation(fields: [characterId], references: [characterId], onDelete : Cascade)
+  characters Characters @relation(fields: [characterId], references: [characterId], onDelete : Cascade, onUpdate: Cascade)
   inventoryitem InventoryItem[]
   @@map("Inventory")
 }
 
+// 인벤토리 격자 한칸
 model InventoryItem {
-  inventoryItemId Int @id
+  inventoryItemId Int @id @default(autoincrement())
   inventoryId Int
+  itemCode Int 
+  itemCount Int
 
-  inventory Inventory @relation(fields: [inventoryId], references: [inventoryId])
+  inventory Inventory @relation(fields: [inventoryId], references: [inventoryId], onDelete: Cascade, onUpdate: Cascade)
   @@map("InventoryItem")
 }
 
@@ -79,8 +67,7 @@ model EquippedItem {
   equippedItemId Int @id @default(autoincrement()) 
   characterId Int 
   equippedItemName String 
-  type ItemType
   
-  characters Characters @relation(fields: [characterId], references : [characterId], onDelete : Cascade)
+  characters Characters @relation(fields: [characterId], references : [characterId], onDelete : Cascade, onUpdate: Cascade)
   @@map("EquippedItem")
 }

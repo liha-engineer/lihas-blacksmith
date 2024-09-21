@@ -131,7 +131,6 @@ exports.Prisma.CharactersScalarFieldEnum = {
   characterId: 'characterId',
   accountId: 'accountId',
   characterName: 'characterName',
-  inventoryCount: 'inventoryCount',
   hp: 'hp',
   atk: 'atk',
   money: 'money',
@@ -141,36 +140,27 @@ exports.Prisma.CharactersScalarFieldEnum = {
 
 exports.Prisma.InventoryScalarFieldEnum = {
   inventoryId: 'inventoryId',
-  characterId: 'characterId',
-  itemId: 'itemId',
-  itemName: 'itemName',
-  itemCount: 'itemCount'
+  characterId: 'characterId'
 };
 
 exports.Prisma.InventoryItemScalarFieldEnum = {
   inventoryItemId: 'inventoryItemId',
-  inventoryId: 'inventoryId'
+  inventoryId: 'inventoryId',
+  itemCode: 'itemCode',
+  itemCount: 'itemCount'
 };
 
 exports.Prisma.EquippedItemScalarFieldEnum = {
   equippedItemId: 'equippedItemId',
   characterId: 'characterId',
-  equippedItemName: 'equippedItemName',
-  type: 'type'
+  equippedItemName: 'equippedItemName'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
-exports.ItemType = exports.$Enums.ItemType = {
-  WEAPON: 'WEAPON',
-  ARMOUR: 'ARMOUR',
-  GLOVE: 'GLOVE',
-  SHOES: 'SHOES',
-  ACCESORY: 'ACCESORY',
-  DISPOSABLE: 'DISPOSABLE'
-};
+
 
 exports.Prisma.ModelName = {
   Account: 'Account',

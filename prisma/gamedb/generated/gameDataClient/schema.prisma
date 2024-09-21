@@ -15,7 +15,6 @@ datasource gamedb {
 }
 
 // enum 타입을 줄 수도 있다!
-// 인벤토리 칸수를 제한하고 싶으면 inventory로 default를 정해주는 것도 좋다 
 
 enum ItemType {
   WEAPON
@@ -29,7 +28,7 @@ enum ItemType {
 model Items {
   itemId   Int      @id @default(autoincrement())
   itemName String   @unique
-  itemCode Int
+  itemCode Int      @unique
   itemStat Json
   price    Int
   type     ItemType

@@ -1878,15 +1878,15 @@ export namespace Prisma {
   export type ItemsWhereUniqueInput = Prisma.AtLeast<{
     itemId?: number
     itemName?: string
+    itemCode?: number
     AND?: ItemsWhereInput | ItemsWhereInput[]
     OR?: ItemsWhereInput[]
     NOT?: ItemsWhereInput | ItemsWhereInput[]
-    itemCode?: IntFilter<"Items"> | number
     itemStat?: JsonFilter<"Items">
     price?: IntFilter<"Items"> | number
     type?: EnumItemTypeFilter<"Items"> | $Enums.ItemType
     tooltip?: StringNullableFilter<"Items"> | string | null
-  }, "itemId" | "itemName">
+  }, "itemId" | "itemName" | "itemCode">
 
   export type ItemsOrderByWithAggregationInput = {
     itemId?: SortOrder

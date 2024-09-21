@@ -1,12 +1,11 @@
 import express from 'express';
-import { prisma } from '../utils/prisma/index.js';
+import { userDataClient } from '../utils/prisma/index.js';
 import bcrypt from 'bcrypt'
 import { Prisma } from '@prisma/client';
 import authMiddleware from '../middlewares/auth.middleware.js';
-import joi from 'joi';
+import  textValidation  from '../utils/joi/texvalidation.schema.js';
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
-
 
 dotenv.config();
 
@@ -14,29 +13,20 @@ const router = express.Router();
 
 router.post('/sign-up', async (req, res, next) => {
     try {
-        const { id, name, password, passwordConfirm } = req.body;
-
-            const isExistName = await prisma.account.findFirst({
-                where: { id },
+        const accountValidation = await textValidation.account.validateAsync(req.body);
+        const { id, name, password, passwordConfirm } = accountValidation;
+    
+        const isExistName = await userDataClient.account.findFirst({
+            where: { id },
             });
-            if (!/^[a-z0-9]+$/.test(id))
-                return res.status(400).json({message : "ID는 영문과 소문자 조합이어야 합니다. "})
-
             if (isExistName) 
-                return res.status(409).json({message: "해당 닉네임의 유저가 이미 존재합니다. "});
-
-            if (password.length < 6)
-                return res.status(400).json({message : "패스워드는 6자 이상이어야 합니다. "})
-
-            if (password.replace(/^\s+$/, '') === null)
-                return res.status(400).json({message : "패스워드는 공백일 수 없습니다. "});
-            
+                return res.status(409).json({message: "해당 유저가 이미 존재합니다. "});
             if (password !== passwordConfirm)
                 return res.status(400).json({message: "패스워드가 확인과 일치하지 않습니다." })
 
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            const user = await prisma.account.create({
+            const user = await userDataClient.account.create({
                 data: {
                     id, 
                     name, 
@@ -45,13 +35,13 @@ router.post('/sign-up', async (req, res, next) => {
             });
         return res.status(201).json({message : `${user.id}님, 회원 가입이 완료되었습니다.`})
     } catch(err) {
-        next(err);
+		next(err);
      }
 });
 
 router.post("/sign-in", async (req, res, next) => {
     const {id, password} = req.body;
-    const user = await prisma.account.findFirst({
+    const user = await userDataClient.account.findFirst({
         where: { id }
     });
 
@@ -80,8 +70,8 @@ router.get('/account', authMiddleware, async(req, res, next) => {
     const { accountId } = req.user;
 
     // 전달받은 정보에서 accountId 꺼내서 DB랑 같은지 살펴볼거임
-    const user = await prisma.account.findFirst({
-        where : {accountId : +accountId},
+    const user = await userDataClient.account.findFirst({
+        where : { accountId : +accountId },
         select : {
             id : true,
             name : true,

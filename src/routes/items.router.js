@@ -1,5 +1,5 @@
 import express from 'express'
-import { prisma } from "../utils/prisma/index.js";
+import { gameDataClient } from "../utils/prisma/index.js";
 import { Prisma } from "@prisma/client";
 import authMiddleware from '../middlewares/auth.middleware.js';
 
@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/items', async (req, res, next) => {
     const { itemName, itemCode, itemStat, price, count, type, tooltip } = req.body;
 
-    const isExistItem = await prisma.items.findFirst({
+    const isExistItem = await gameDataClient.items.findFirst({
         where: {itemName}
     })
     if (isExistItem)
@@ -21,7 +21,7 @@ router.post('/items', async (req, res, next) => {
     if(!type)
         return res.status(400).json({message : "아이템 타입을 입력해주세요"})
     
-    const registeredItem = await prisma.items.create ({
+    const registeredItem = await gameDataClient.items.create ({
         data : {
             itemName,
             itemCode,
@@ -43,7 +43,7 @@ router.put('/items/:itemId', async (req, res, next) => {
     const { itemId }  = req.params;
     const { itemName, itemStat, tooltip } = req.body;
 
-    const isCorrectItem = await prisma.items.findFirst({
+    const isCorrectItem = await gameDataClient.items.findFirst({
         where : {itemId : +itemId}
     })
     if(!isCorrectItem)
@@ -55,7 +55,7 @@ router.put('/items/:itemId', async (req, res, next) => {
     if(req.body.price)
         return res.status(400).json({message : "아이템 가격은 수정할 수 없습니다"})
 
-    const itemInfo = await prisma.items.update({
+    const itemInfo = await gameDataClient.items.update({
         where : { itemId : +itemId }, 
         data : {
             itemName,
@@ -73,7 +73,7 @@ router.put('/items/:itemId', async (req, res, next) => {
 
 // 아이템 전체조회
 router.get('/items', async(req, res, next) => {
-    const itemList = await prisma.items.findMany({
+    const itemList = await gameDataClient.items.findMany({
         select : {
             itemId : true,
             itemCode : true,
@@ -88,7 +88,7 @@ router.get('/items', async(req, res, next) => {
 // 아이템 상세조회
 router.get('/items/:itemId', async (req, res, next) => {
     const { itemId } = req.params;
-    const itemInfo = await prisma.items.findFirst({
+    const itemInfo = await gameDataClient.items.findFirst({
         where : {itemId : +itemId},
         select : {
             itemId : true,

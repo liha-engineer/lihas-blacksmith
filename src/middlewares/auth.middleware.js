@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { prisma } from '../utils/prisma/index.js';
+import { userDataClient } from '../utils/prisma/index.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -19,7 +19,7 @@ const loginAuth = async (req, res, next) => {
     // 토큰만들때 accountId 저장하게 해서 만들었다. 
     // 그래서 검증완료된 토큰에서 그거 꺼내 쓸 것임
     const accountId = decodedToken.accountId;
-    const user = await prisma.account.findFirst ({
+    const user = await userDataClient.account.findFirst ({
         where : { accountId : +accountId }, 
     }); 
     if (!user) throw new Error ("토큰 사용자가 존재하지 않습니다")

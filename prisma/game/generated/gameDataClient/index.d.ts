@@ -203,6 +203,8 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
+
+
   /**
    * Decimal.js
    */
@@ -229,7 +231,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.19.1
+   * Prisma Client JS version: 5.20.0
    * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
    */
   export type PrismaVersion = {
@@ -1046,7 +1048,7 @@ export namespace Prisma {
     itemStat: JsonValue
     price: number
     type: $Enums.ItemType
-    tooltip: string | null
+    tooltip: string
     _count: ItemsCountAggregateOutputType | null
     _avg: ItemsAvgAggregateOutputType | null
     _sum: ItemsSumAggregateOutputType | null
@@ -1100,7 +1102,7 @@ export namespace Prisma {
       itemStat: Prisma.JsonValue
       price: number
       type: $Enums.ItemType
-      tooltip: string | null
+      tooltip: string
     }, ExtArgs["result"]["items"]>
     composites: {}
   }
@@ -1801,14 +1803,6 @@ export namespace Prisma {
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   /**
    * Field references 
    */
@@ -1862,7 +1856,7 @@ export namespace Prisma {
     itemStat?: JsonFilter<"Items">
     price?: IntFilter<"Items"> | number
     type?: EnumItemTypeFilter<"Items"> | $Enums.ItemType
-    tooltip?: StringNullableFilter<"Items"> | string | null
+    tooltip?: StringFilter<"Items"> | string
   }
 
   export type ItemsOrderByWithRelationInput = {
@@ -1872,7 +1866,7 @@ export namespace Prisma {
     itemStat?: SortOrder
     price?: SortOrder
     type?: SortOrder
-    tooltip?: SortOrderInput | SortOrder
+    tooltip?: SortOrder
   }
 
   export type ItemsWhereUniqueInput = Prisma.AtLeast<{
@@ -1885,7 +1879,7 @@ export namespace Prisma {
     itemStat?: JsonFilter<"Items">
     price?: IntFilter<"Items"> | number
     type?: EnumItemTypeFilter<"Items"> | $Enums.ItemType
-    tooltip?: StringNullableFilter<"Items"> | string | null
+    tooltip?: StringFilter<"Items"> | string
   }, "itemId" | "itemName" | "itemCode">
 
   export type ItemsOrderByWithAggregationInput = {
@@ -1895,7 +1889,7 @@ export namespace Prisma {
     itemStat?: SortOrder
     price?: SortOrder
     type?: SortOrder
-    tooltip?: SortOrderInput | SortOrder
+    tooltip?: SortOrder
     _count?: ItemsCountOrderByAggregateInput
     _avg?: ItemsAvgOrderByAggregateInput
     _max?: ItemsMaxOrderByAggregateInput
@@ -1913,7 +1907,7 @@ export namespace Prisma {
     itemStat?: JsonWithAggregatesFilter<"Items">
     price?: IntWithAggregatesFilter<"Items"> | number
     type?: EnumItemTypeWithAggregatesFilter<"Items"> | $Enums.ItemType
-    tooltip?: StringNullableWithAggregatesFilter<"Items"> | string | null
+    tooltip?: StringWithAggregatesFilter<"Items"> | string
   }
 
   export type ItemsCreateInput = {
@@ -1922,7 +1916,7 @@ export namespace Prisma {
     itemStat: JsonNullValueInput | InputJsonValue
     price: number
     type: $Enums.ItemType
-    tooltip?: string | null
+    tooltip: string
   }
 
   export type ItemsUncheckedCreateInput = {
@@ -1932,7 +1926,7 @@ export namespace Prisma {
     itemStat: JsonNullValueInput | InputJsonValue
     price: number
     type: $Enums.ItemType
-    tooltip?: string | null
+    tooltip: string
   }
 
   export type ItemsUpdateInput = {
@@ -1941,7 +1935,7 @@ export namespace Prisma {
     itemStat?: JsonNullValueInput | InputJsonValue
     price?: IntFieldUpdateOperationsInput | number
     type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
-    tooltip?: NullableStringFieldUpdateOperationsInput | string | null
+    tooltip?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemsUncheckedUpdateInput = {
@@ -1951,7 +1945,7 @@ export namespace Prisma {
     itemStat?: JsonNullValueInput | InputJsonValue
     price?: IntFieldUpdateOperationsInput | number
     type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
-    tooltip?: NullableStringFieldUpdateOperationsInput | string | null
+    tooltip?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemsCreateManyInput = {
@@ -1961,7 +1955,7 @@ export namespace Prisma {
     itemStat: JsonNullValueInput | InputJsonValue
     price: number
     type: $Enums.ItemType
-    tooltip?: string | null
+    tooltip: string
   }
 
   export type ItemsUpdateManyMutationInput = {
@@ -1970,7 +1964,7 @@ export namespace Prisma {
     itemStat?: JsonNullValueInput | InputJsonValue
     price?: IntFieldUpdateOperationsInput | number
     type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
-    tooltip?: NullableStringFieldUpdateOperationsInput | string | null
+    tooltip?: StringFieldUpdateOperationsInput | string
   }
 
   export type ItemsUncheckedUpdateManyInput = {
@@ -1980,7 +1974,7 @@ export namespace Prisma {
     itemStat?: JsonNullValueInput | InputJsonValue
     price?: IntFieldUpdateOperationsInput | number
     type?: EnumItemTypeFieldUpdateOperationsInput | $Enums.ItemType
-    tooltip?: NullableStringFieldUpdateOperationsInput | string | null
+    tooltip?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2035,25 +2029,6 @@ export namespace Prisma {
     in?: $Enums.ItemType[]
     notIn?: $Enums.ItemType[]
     not?: NestedEnumItemTypeFilter<$PrismaModel> | $Enums.ItemType
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type ItemsCountOrderByAggregateInput = {
@@ -2164,23 +2139,6 @@ export namespace Prisma {
     _max?: NestedEnumItemTypeFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2195,10 +2153,6 @@ export namespace Prisma {
 
   export type EnumItemTypeFieldUpdateOperationsInput = {
     set?: $Enums.ItemType
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2231,20 +2185,6 @@ export namespace Prisma {
     in?: $Enums.ItemType[]
     notIn?: $Enums.ItemType[]
     not?: NestedEnumItemTypeFilter<$PrismaModel> | $Enums.ItemType
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2321,34 +2261,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumItemTypeFilter<$PrismaModel>
     _max?: NestedEnumItemTypeFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
 

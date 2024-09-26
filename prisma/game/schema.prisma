@@ -32,7 +32,7 @@ model Items {
   itemStat Json 
   price Int 
   type ItemType 
-  tooltip String?  @gamedb.Text
+  tooltip String  @gamedb.Text
 
   @@map("items")
 }

@@ -34,5 +34,5 @@ model Items {
   type ItemType 
   tooltip String?  @gamedb.Text
 
-  @@map("Items")
+  @@map("items")
 }

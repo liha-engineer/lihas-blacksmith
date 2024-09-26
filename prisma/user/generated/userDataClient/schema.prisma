@@ -23,7 +23,7 @@ model Account {
 
   characters Characters[]
 
-  @@map("Account")
+  @@map("accounts")
 }
 
 model Characters {
@@ -40,7 +40,7 @@ model Characters {
   inventory    Inventory[]
   equippeditem EquippedItem[]
 
-  @@map("Characters")
+  @@map("characters")
 }
 
 // 얘는 큰 배낭 하나고
@@ -51,7 +51,7 @@ model Inventory {
   characters    Characters      @relation(fields: [characterId], references: [characterId], onDelete: Cascade, onUpdate: Cascade)
   inventoryitem InventoryItem[]
 
-  @@map("Inventory")
+  @@map("inventory")
 }
 
 // 인벤토리 격자 한칸
@@ -63,7 +63,7 @@ model InventoryItem {
 
   inventory Inventory @relation(fields: [inventoryId], references: [inventoryId], onDelete: Cascade, onUpdate: Cascade)
 
-  @@map("InventoryItem")
+  @@map("inventoryitems")
 }
 
 model EquippedItem {
@@ -73,5 +73,5 @@ model EquippedItem {
 
   characters Characters @relation(fields: [characterId], references: [characterId], onDelete: Cascade, onUpdate: Cascade)
 
-  @@map("EquippedItem")
+  @@map("equippeditems")
 }

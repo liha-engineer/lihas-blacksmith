@@ -139,7 +139,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "E:\\spartacodingclub\\2024 nbc\\lihas-blacksmith\\prisma\\gamedb\\generated\\gameDataClient",
+      "value": "E:\\spartacodingclub\\2024 nbc\\lihas-blacksmith\\prisma\\game\\generated\\gameDataClient",
       "fromEnvVar": null
     },
     "config": {
@@ -153,7 +153,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "E:\\spartacodingclub\\2024 nbc\\lihas-blacksmith\\prisma\\gamedb\\schema.prisma",
+    "sourceFilePath": "E:\\spartacodingclub\\2024 nbc\\lihas-blacksmith\\prisma\\game\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -174,13 +174,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/gameDataClient\"\n}\n\ndatasource gamedb {\n  provider = \"mysql\"\n  url      = env(\"GAMEDB_URL\")\n}\n\n// enum 타입을 줄 수도 있다!\n\nenum ItemType {\n  WEAPON\n  ARMOUR\n  GLOVE\n  SHOES\n  ACCESORY\n  DISPOSABLE\n}\n\nmodel Items {\n  itemId   Int      @id @default(autoincrement())\n  itemName String   @unique\n  itemCode Int      @unique\n  itemStat Json\n  price    Int\n  type     ItemType\n  tooltip  String?  @gamedb.Text\n\n  @@map(\"Items\")\n}\n",
-  "inlineSchemaHash": "b59de517ee8b9da7a7667e01a24484e3271d4e6cfe946d1d52af82d6cae7176d",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/gameDataClient\"\n}\n\ndatasource gamedb {\n  provider = \"mysql\"\n  url      = env(\"GAMEDB_URL\")\n}\n\n// enum 타입을 줄 수도 있다!\n\nenum ItemType {\n  WEAPON\n  ARMOUR\n  GLOVE\n  SHOES\n  ACCESORY\n  DISPOSABLE\n}\n\nmodel Items {\n  itemId   Int      @id @default(autoincrement())\n  itemName String   @unique\n  itemCode Int      @unique\n  itemStat Json\n  price    Int\n  type     ItemType\n  tooltip  String?  @gamedb.Text\n\n  @@map(\"items\")\n}\n",
+  "inlineSchemaHash": "3a3378968c3c45f7d405bcfd220184918f0ad2c77f7a580e7e34e618c58cdb09",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Items\":{\"dbName\":\"Items\",\"fields\":[{\"name\":\"itemId\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemName\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemCode\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemStat\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Json\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"price\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"type\",\"kind\":\"enum\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"ItemType\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"tooltip\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{\"ItemType\":{\"values\":[{\"name\":\"WEAPON\",\"dbName\":null},{\"name\":\"ARMOUR\",\"dbName\":null},{\"name\":\"GLOVE\",\"dbName\":null},{\"name\":\"SHOES\",\"dbName\":null},{\"name\":\"ACCESORY\",\"dbName\":null},{\"name\":\"DISPOSABLE\",\"dbName\":null}],\"dbName\":null}},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Items\":{\"dbName\":\"items\",\"fields\":[{\"name\":\"itemId\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemName\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemCode\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":true,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"itemStat\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Json\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"price\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"type\",\"kind\":\"enum\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"ItemType\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"tooltip\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{\"ItemType\":{\"values\":[{\"name\":\"WEAPON\",\"dbName\":null},{\"name\":\"ARMOUR\",\"dbName\":null},{\"name\":\"GLOVE\",\"dbName\":null},{\"name\":\"SHOES\",\"dbName\":null},{\"name\":\"ACCESORY\",\"dbName\":null},{\"name\":\"DISPOSABLE\",\"dbName\":null}],\"dbName\":null}},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = undefined
 

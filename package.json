@@ -1,7 +1,7 @@
 {
   "name": "lihas-blacksmith",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "src/app.js",
   "license": "MIT",
   "type": "module",
   "scripts": {

@@ -55,7 +55,7 @@ model Inventory {
 model InventoryItem {
   inventoryItemId Int @id @default(autoincrement())
   inventoryId Int
-  itemId Int 
+  itemId Int @unique
   itemCount Int
 
   inventory Inventory @relation(fields: [inventoryId], references: [inventoryId], onDelete: Cascade, onUpdate: Cascade)
@@ -66,6 +66,7 @@ model InventoryItem {
 model EquippedItem {
   equippedItemId Int @id @default(autoincrement()) 
   characterId Int 
+  itemId Int @unique
   equippedItemName String 
   
   characters Characters @relation(fields: [characterId], references : [characterId], onDelete : Cascade, onUpdate: Cascade)

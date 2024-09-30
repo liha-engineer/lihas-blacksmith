@@ -156,6 +156,7 @@ exports.Prisma.InventoryItemScalarFieldEnum = {
 exports.Prisma.EquippedItemScalarFieldEnum = {
   equippedItemId: 'equippedItemId',
   characterId: 'characterId',
+  itemId: 'itemId',
   equippedItemName: 'equippedItemName'
 };
 

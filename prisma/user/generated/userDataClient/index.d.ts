@@ -5054,28 +5054,33 @@ export namespace Prisma {
   export type EquippedItemAvgAggregateOutputType = {
     equippedItemId: number | null
     characterId: number | null
+    itemId: number | null
   }
 
   export type EquippedItemSumAggregateOutputType = {
     equippedItemId: number | null
     characterId: number | null
+    itemId: number | null
   }
 
   export type EquippedItemMinAggregateOutputType = {
     equippedItemId: number | null
     characterId: number | null
+    itemId: number | null
     equippedItemName: string | null
   }
 
   export type EquippedItemMaxAggregateOutputType = {
     equippedItemId: number | null
     characterId: number | null
+    itemId: number | null
     equippedItemName: string | null
   }
 
   export type EquippedItemCountAggregateOutputType = {
     equippedItemId: number
     characterId: number
+    itemId: number
     equippedItemName: number
     _all: number
   }
@@ -5084,28 +5089,33 @@ export namespace Prisma {
   export type EquippedItemAvgAggregateInputType = {
     equippedItemId?: true
     characterId?: true
+    itemId?: true
   }
 
   export type EquippedItemSumAggregateInputType = {
     equippedItemId?: true
     characterId?: true
+    itemId?: true
   }
 
   export type EquippedItemMinAggregateInputType = {
     equippedItemId?: true
     characterId?: true
+    itemId?: true
     equippedItemName?: true
   }
 
   export type EquippedItemMaxAggregateInputType = {
     equippedItemId?: true
     characterId?: true
+    itemId?: true
     equippedItemName?: true
   }
 
   export type EquippedItemCountAggregateInputType = {
     equippedItemId?: true
     characterId?: true
+    itemId?: true
     equippedItemName?: true
     _all?: true
   }
@@ -5199,6 +5209,7 @@ export namespace Prisma {
   export type EquippedItemGroupByOutputType = {
     equippedItemId: number
     characterId: number
+    itemId: number
     equippedItemName: string
     _count: EquippedItemCountAggregateOutputType | null
     _avg: EquippedItemAvgAggregateOutputType | null
@@ -5224,6 +5235,7 @@ export namespace Prisma {
   export type EquippedItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     equippedItemId?: boolean
     characterId?: boolean
+    itemId?: boolean
     equippedItemName?: boolean
     characters?: boolean | CharactersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["equippedItem"]>
@@ -5232,6 +5244,7 @@ export namespace Prisma {
   export type EquippedItemSelectScalar = {
     equippedItemId?: boolean
     characterId?: boolean
+    itemId?: boolean
     equippedItemName?: boolean
   }
 
@@ -5247,6 +5260,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       equippedItemId: number
       characterId: number
+      itemId: number
       equippedItemName: string
     }, ExtArgs["result"]["equippedItem"]>
     composites: {}
@@ -5620,6 +5634,7 @@ export namespace Prisma {
   interface EquippedItemFieldRefs {
     readonly equippedItemId: FieldRef<"EquippedItem", 'Int'>
     readonly characterId: FieldRef<"EquippedItem", 'Int'>
+    readonly itemId: FieldRef<"EquippedItem", 'Int'>
     readonly equippedItemName: FieldRef<"EquippedItem", 'String'>
   }
     
@@ -5994,6 +6009,7 @@ export namespace Prisma {
   export const EquippedItemScalarFieldEnum: {
     equippedItemId: 'equippedItemId',
     characterId: 'characterId',
+    itemId: 'itemId',
     equippedItemName: 'equippedItemName'
   };
 
@@ -6245,14 +6261,14 @@ export namespace Prisma {
 
   export type InventoryItemWhereUniqueInput = Prisma.AtLeast<{
     inventoryItemId?: number
+    itemId?: number
     AND?: InventoryItemWhereInput | InventoryItemWhereInput[]
     OR?: InventoryItemWhereInput[]
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
     inventoryId?: IntFilter<"InventoryItem"> | number
-    itemId?: IntFilter<"InventoryItem"> | number
     itemCount?: IntFilter<"InventoryItem"> | number
     inventory?: XOR<InventoryRelationFilter, InventoryWhereInput>
-  }, "inventoryItemId">
+  }, "inventoryItemId" | "itemId">
 
   export type InventoryItemOrderByWithAggregationInput = {
     inventoryItemId?: SortOrder
@@ -6282,6 +6298,7 @@ export namespace Prisma {
     NOT?: EquippedItemWhereInput | EquippedItemWhereInput[]
     equippedItemId?: IntFilter<"EquippedItem"> | number
     characterId?: IntFilter<"EquippedItem"> | number
+    itemId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
   }
@@ -6289,23 +6306,26 @@ export namespace Prisma {
   export type EquippedItemOrderByWithRelationInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
     equippedItemName?: SortOrder
     characters?: CharactersOrderByWithRelationInput
   }
 
   export type EquippedItemWhereUniqueInput = Prisma.AtLeast<{
     equippedItemId?: number
+    itemId?: number
     AND?: EquippedItemWhereInput | EquippedItemWhereInput[]
     OR?: EquippedItemWhereInput[]
     NOT?: EquippedItemWhereInput | EquippedItemWhereInput[]
     characterId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
     characters?: XOR<CharactersRelationFilter, CharactersWhereInput>
-  }, "equippedItemId">
+  }, "equippedItemId" | "itemId">
 
   export type EquippedItemOrderByWithAggregationInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
     equippedItemName?: SortOrder
     _count?: EquippedItemCountOrderByAggregateInput
     _avg?: EquippedItemAvgOrderByAggregateInput
@@ -6320,6 +6340,7 @@ export namespace Prisma {
     NOT?: EquippedItemScalarWhereWithAggregatesInput | EquippedItemScalarWhereWithAggregatesInput[]
     equippedItemId?: IntWithAggregatesFilter<"EquippedItem"> | number
     characterId?: IntWithAggregatesFilter<"EquippedItem"> | number
+    itemId?: IntWithAggregatesFilter<"EquippedItem"> | number
     equippedItemName?: StringWithAggregatesFilter<"EquippedItem"> | string
   }
 
@@ -6543,6 +6564,7 @@ export namespace Prisma {
   }
 
   export type EquippedItemCreateInput = {
+    itemId: number
     equippedItemName: string
     characters: CharactersCreateNestedOneWithoutEquippeditemInput
   }
@@ -6550,10 +6572,12 @@ export namespace Prisma {
   export type EquippedItemUncheckedCreateInput = {
     equippedItemId?: number
     characterId: number
+    itemId: number
     equippedItemName: string
   }
 
   export type EquippedItemUpdateInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
     characters?: CharactersUpdateOneRequiredWithoutEquippeditemNestedInput
   }
@@ -6561,22 +6585,26 @@ export namespace Prisma {
   export type EquippedItemUncheckedUpdateInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 
   export type EquippedItemCreateManyInput = {
     equippedItemId?: number
     characterId: number
+    itemId: number
     equippedItemName: string
   }
 
   export type EquippedItemUpdateManyMutationInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 
   export type EquippedItemUncheckedUpdateManyInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
     characterId?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6862,29 +6890,34 @@ export namespace Prisma {
   export type EquippedItemCountOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
     equippedItemName?: SortOrder
   }
 
   export type EquippedItemAvgOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
   }
 
   export type EquippedItemMaxOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
     equippedItemName?: SortOrder
   }
 
   export type EquippedItemMinOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
     equippedItemName?: SortOrder
   }
 
   export type EquippedItemSumOrderByAggregateInput = {
     equippedItemId?: SortOrder
     characterId?: SortOrder
+    itemId?: SortOrder
   }
 
   export type CharactersCreateNestedManyWithoutAccountInput = {
@@ -7324,11 +7357,13 @@ export namespace Prisma {
   }
 
   export type EquippedItemCreateWithoutCharactersInput = {
+    itemId: number
     equippedItemName: string
   }
 
   export type EquippedItemUncheckedCreateWithoutCharactersInput = {
     equippedItemId?: number
+    itemId: number
     equippedItemName: string
   }
 
@@ -7414,6 +7449,7 @@ export namespace Prisma {
     NOT?: EquippedItemScalarWhereInput | EquippedItemScalarWhereInput[]
     equippedItemId?: IntFilter<"EquippedItem"> | number
     characterId?: IntFilter<"EquippedItem"> | number
+    itemId?: IntFilter<"EquippedItem"> | number
     equippedItemName?: StringFilter<"EquippedItem"> | string
   }
 
@@ -7671,6 +7707,7 @@ export namespace Prisma {
 
   export type EquippedItemCreateManyCharactersInput = {
     equippedItemId?: number
+    itemId: number
     equippedItemName: string
   }
 
@@ -7688,16 +7725,19 @@ export namespace Prisma {
   }
 
   export type EquippedItemUpdateWithoutCharactersInput = {
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 
   export type EquippedItemUncheckedUpdateWithoutCharactersInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 
   export type EquippedItemUncheckedUpdateManyWithoutCharactersInput = {
     equippedItemId?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     equippedItemName?: StringFieldUpdateOperationsInput | string
   }
 

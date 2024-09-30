@@ -242,6 +242,8 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
+
+
   /**
    * Decimal.js
    */
@@ -268,7 +270,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.19.1
+   * Prisma Client JS version: 5.20.0
    * Query Engine version: 69d742ee20b815d88e17e54db4a2a7a3b30324e3
    */
   export type PrismaVersion = {
@@ -4138,35 +4140,35 @@ export namespace Prisma {
   export type InventoryItemAvgAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
-    itemCode: number | null
+    itemId: number | null
     itemCount: number | null
   }
 
   export type InventoryItemSumAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
-    itemCode: number | null
+    itemId: number | null
     itemCount: number | null
   }
 
   export type InventoryItemMinAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
-    itemCode: number | null
+    itemId: number | null
     itemCount: number | null
   }
 
   export type InventoryItemMaxAggregateOutputType = {
     inventoryItemId: number | null
     inventoryId: number | null
-    itemCode: number | null
+    itemId: number | null
     itemCount: number | null
   }
 
   export type InventoryItemCountAggregateOutputType = {
     inventoryItemId: number
     inventoryId: number
-    itemCode: number
+    itemId: number
     itemCount: number
     _all: number
   }
@@ -4175,35 +4177,35 @@ export namespace Prisma {
   export type InventoryItemAvgAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
-    itemCode?: true
+    itemId?: true
     itemCount?: true
   }
 
   export type InventoryItemSumAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
-    itemCode?: true
+    itemId?: true
     itemCount?: true
   }
 
   export type InventoryItemMinAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
-    itemCode?: true
+    itemId?: true
     itemCount?: true
   }
 
   export type InventoryItemMaxAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
-    itemCode?: true
+    itemId?: true
     itemCount?: true
   }
 
   export type InventoryItemCountAggregateInputType = {
     inventoryItemId?: true
     inventoryId?: true
-    itemCode?: true
+    itemId?: true
     itemCount?: true
     _all?: true
   }
@@ -4297,7 +4299,7 @@ export namespace Prisma {
   export type InventoryItemGroupByOutputType = {
     inventoryItemId: number
     inventoryId: number
-    itemCode: number
+    itemId: number
     itemCount: number
     _count: InventoryItemCountAggregateOutputType | null
     _avg: InventoryItemAvgAggregateOutputType | null
@@ -4323,7 +4325,7 @@ export namespace Prisma {
   export type InventoryItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     inventoryItemId?: boolean
     inventoryId?: boolean
-    itemCode?: boolean
+    itemId?: boolean
     itemCount?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryItem"]>
@@ -4332,7 +4334,7 @@ export namespace Prisma {
   export type InventoryItemSelectScalar = {
     inventoryItemId?: boolean
     inventoryId?: boolean
-    itemCode?: boolean
+    itemId?: boolean
     itemCount?: boolean
   }
 
@@ -4348,7 +4350,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       inventoryItemId: number
       inventoryId: number
-      itemCode: number
+      itemId: number
       itemCount: number
     }, ExtArgs["result"]["inventoryItem"]>
     composites: {}
@@ -4722,7 +4724,7 @@ export namespace Prisma {
   interface InventoryItemFieldRefs {
     readonly inventoryItemId: FieldRef<"InventoryItem", 'Int'>
     readonly inventoryId: FieldRef<"InventoryItem", 'Int'>
-    readonly itemCode: FieldRef<"InventoryItem", 'Int'>
+    readonly itemId: FieldRef<"InventoryItem", 'Int'>
     readonly itemCount: FieldRef<"InventoryItem", 'Int'>
   }
     
@@ -5982,7 +5984,7 @@ export namespace Prisma {
   export const InventoryItemScalarFieldEnum: {
     inventoryItemId: 'inventoryItemId',
     inventoryId: 'inventoryId',
-    itemCode: 'itemCode',
+    itemId: 'itemId',
     itemCount: 'itemCount'
   };
 
@@ -6228,7 +6230,7 @@ export namespace Prisma {
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
     inventoryItemId?: IntFilter<"InventoryItem"> | number
     inventoryId?: IntFilter<"InventoryItem"> | number
-    itemCode?: IntFilter<"InventoryItem"> | number
+    itemId?: IntFilter<"InventoryItem"> | number
     itemCount?: IntFilter<"InventoryItem"> | number
     inventory?: XOR<InventoryRelationFilter, InventoryWhereInput>
   }
@@ -6236,7 +6238,7 @@ export namespace Prisma {
   export type InventoryItemOrderByWithRelationInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
     inventory?: InventoryOrderByWithRelationInput
   }
@@ -6247,7 +6249,7 @@ export namespace Prisma {
     OR?: InventoryItemWhereInput[]
     NOT?: InventoryItemWhereInput | InventoryItemWhereInput[]
     inventoryId?: IntFilter<"InventoryItem"> | number
-    itemCode?: IntFilter<"InventoryItem"> | number
+    itemId?: IntFilter<"InventoryItem"> | number
     itemCount?: IntFilter<"InventoryItem"> | number
     inventory?: XOR<InventoryRelationFilter, InventoryWhereInput>
   }, "inventoryItemId">
@@ -6255,7 +6257,7 @@ export namespace Prisma {
   export type InventoryItemOrderByWithAggregationInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
     _count?: InventoryItemCountOrderByAggregateInput
     _avg?: InventoryItemAvgOrderByAggregateInput
@@ -6270,7 +6272,7 @@ export namespace Prisma {
     NOT?: InventoryItemScalarWhereWithAggregatesInput | InventoryItemScalarWhereWithAggregatesInput[]
     inventoryItemId?: IntWithAggregatesFilter<"InventoryItem"> | number
     inventoryId?: IntWithAggregatesFilter<"InventoryItem"> | number
-    itemCode?: IntWithAggregatesFilter<"InventoryItem"> | number
+    itemId?: IntWithAggregatesFilter<"InventoryItem"> | number
     itemCount?: IntWithAggregatesFilter<"InventoryItem"> | number
   }
 
@@ -6496,7 +6498,7 @@ export namespace Prisma {
   }
 
   export type InventoryItemCreateInput = {
-    itemCode: number
+    itemId: number
     itemCount: number
     inventory: InventoryCreateNestedOneWithoutInventoryitemInput
   }
@@ -6504,12 +6506,12 @@ export namespace Prisma {
   export type InventoryItemUncheckedCreateInput = {
     inventoryItemId?: number
     inventoryId: number
-    itemCode: number
+    itemId: number
     itemCount: number
   }
 
   export type InventoryItemUpdateInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
     inventory?: InventoryUpdateOneRequiredWithoutInventoryitemNestedInput
   }
@@ -6517,26 +6519,26 @@ export namespace Prisma {
   export type InventoryItemUncheckedUpdateInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemCreateManyInput = {
     inventoryItemId?: number
     inventoryId: number
-    itemCode: number
+    itemId: number
     itemCount: number
   }
 
   export type InventoryItemUpdateManyMutationInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateManyInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
     inventoryId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6825,35 +6827,35 @@ export namespace Prisma {
   export type InventoryItemCountOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
   }
 
   export type InventoryItemAvgOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
   }
 
   export type InventoryItemMaxOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
   }
 
   export type InventoryItemMinOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
   }
 
   export type InventoryItemSumOrderByAggregateInput = {
     inventoryItemId?: SortOrder
     inventoryId?: SortOrder
-    itemCode?: SortOrder
+    itemId?: SortOrder
     itemCount?: SortOrder
   }
 
@@ -7444,13 +7446,13 @@ export namespace Prisma {
   }
 
   export type InventoryItemCreateWithoutInventoryInput = {
-    itemCode: number
+    itemId: number
     itemCount: number
   }
 
   export type InventoryItemUncheckedCreateWithoutInventoryInput = {
     inventoryItemId?: number
-    itemCode: number
+    itemId: number
     itemCount: number
   }
 
@@ -7520,7 +7522,7 @@ export namespace Prisma {
     NOT?: InventoryItemScalarWhereInput | InventoryItemScalarWhereInput[]
     inventoryItemId?: IntFilter<"InventoryItem"> | number
     inventoryId?: IntFilter<"InventoryItem"> | number
-    itemCode?: IntFilter<"InventoryItem"> | number
+    itemId?: IntFilter<"InventoryItem"> | number
     itemCount?: IntFilter<"InventoryItem"> | number
   }
 
@@ -7701,24 +7703,24 @@ export namespace Prisma {
 
   export type InventoryItemCreateManyInventoryInput = {
     inventoryItemId?: number
-    itemCode: number
+    itemId: number
     itemCount: number
   }
 
   export type InventoryItemUpdateWithoutInventoryInput = {
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateWithoutInventoryInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 
   export type InventoryItemUncheckedUpdateManyWithoutInventoryInput = {
     inventoryItemId?: IntFieldUpdateOperationsInput | number
-    itemCode?: IntFieldUpdateOperationsInput | number
+    itemId?: IntFieldUpdateOperationsInput | number
     itemCount?: IntFieldUpdateOperationsInput | number
   }
 

@@ -55,7 +55,7 @@ model Inventory {
 model InventoryItem {
   inventoryItemId Int @id @default(autoincrement())
   inventoryId Int
-  itemCode Int 
+  itemId Int 
   itemCount Int
 
   inventory Inventory @relation(fields: [inventoryId], references: [inventoryId], onDelete: Cascade, onUpdate: Cascade)

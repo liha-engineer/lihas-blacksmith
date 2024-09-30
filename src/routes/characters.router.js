@@ -3,6 +3,7 @@ import { userDataClient } from '../utils/prisma/index.js';
 import authMiddleWare from '../middlewares/auth.middleware.js';
 import headerCheckMiddleWare from '../middlewares/header-check.middleware.js';
 import { Prisma } from '@prisma/client';
+import findCharacter from '../utils/character/findcharacter.js';
 
 const router = express.Router();
 
@@ -75,9 +76,7 @@ router.get('/characters/:characterId', headerCheckMiddleWare, authMiddleWare, as
   const { characterId } = req.params;
   const { accountId } = req.user;
 
-  const character = await userDataClient.characters.findUnique({
-    where: { characterId: +characterId },
-  });
+  const character = await findCharacter(characterId);
 
   if (!character) return res.status(404).json({ message: '캐릭터가 존재하지 않습니다.' });
 
@@ -121,9 +120,7 @@ router.delete('/characters/:characterId', authMiddleWare, async (req, res, next)
     if (!accountId)
       return res.status(401).json({ message: '계정 정보가 존재하지 않거나 비정상적 접근입니다.' });
 
-    const character = await userDataClient.characters.findFirst({
-      where: { characterId: +characterId },
-    });
+    const character = await findCharacter(characterId);
     if (!character) return res.status(404).json({ message: '캐릭터가 존재하지 않습니다' });
 
     await userDataClient.characters.delete({

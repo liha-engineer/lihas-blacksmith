@@ -11,7 +11,7 @@ const router = express.Router();
 
 // 장착한 아이템 조회
 
-router.get('/equip/:characterId', async (req, res, next) => {
+router.get('/equipment/:characterId', async (req, res, next) => {
   const { characterId } = req.params;
 
   const character = await findCharacter(characterId);
